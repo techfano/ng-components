@@ -1,0 +1,50 @@
+<div class="control-group" data-ng-class="{error: value1}">
+    <div class="row-fluid" data-ng-show="mostrar">
+        <div class="control-group">
+            <label class="control-label">
+                {{lfecha}}
+                <span class="state-required">(<b>*</b>)</span>
+            </label>
+            <div class="controls">
+                <div class="form-special">
+                    <div class="control-group medium">
+                        <label class="control-label">Desde:</label>
+                        <div class="controls">
+                            <div class="input-append">
+                                <input class="input-medium" id="inputdesde" type="text" value="" ng-model="datepickerdesde.date" data-ng-keyup="keyupDesde()"   data-date-format="dd/mm/yyyy" bs-datepicker data-ng-change="cambiarDesde()">
+                                <button type="button" class="btn" data-toggle="datepicker"><i class="icon-calendar"></i></button>
+                            </div>
+                            <div class="help-block" data-ng-show="mostrarMensajeDesde"><i class="icon-scytl-error"></i>Formato Invalido</div>
+                        </div>
+                    </div>
+                    <div class="control-group big">
+                        <label class="control-label">Hasta:</label>
+                        <div class="controls">
+                            <div class="input-append">
+                              <input class="input-medium" id="inputhasta" type="text" ng-model="datepickerhasta.date" data-ng-keyup="keyupHasta()" data-date-format="dd/mm/yyyy" bs-datepicker data-ng-change="cambiarHasta()">
+                              <button type="button" class="btn" data-toggle="datepicker"><i class="icon-calendar"></i></button>
+                            </div>  
+                            <div class="help-block" data-ng-show="mostrarMensajeHasta"><i class="icon-scytl-error"></i>Formato Invalido</div>  
+                        </div>
+                    </div>                      
+                </div>                  
+            </div>        
+        </div>
+    </div>
+    <div class="row-fluid" data-ng-show="!mostrar">
+        <div class="span12">
+            <label class="control-label">
+                {{lblFecha}}:
+                <span class="state-required">(<b>*</b>)</span>
+            </label>
+
+            <div class="controls">                                                      
+                <div class="input-append">
+                  <input class="input-medium" id="inputfecha" type="text" value="" ng-model="datepicker.date" data-ng-keyup="keyup()" data-date-format="dd/mm/yyyy" bs-datepicker data-ng-change="cambiarFechaSola()">
+                    <button type="button" class="btn" data-toggle="datepicker"><i class="icon-calendar"></i></button>
+                </div>
+                <div class="help-block" data-ng-show="mostrarMensajeFecha"><i class="icon-scytl-error"></i>Formato Invalido</div>
+            </div>
+        </div>
+    </div>
+</div>

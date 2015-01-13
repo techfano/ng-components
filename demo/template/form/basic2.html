@@ -1,0 +1,27 @@
+<div class="control-group small">
+    <label class="control-label">Nombre:
+        <span class="state-required">(<b>*</b>)</span>
+    </label>
+    <div class="controls">
+        <input data-ng-model="nombre" type="text" class="span6">
+    </div>
+</div>
+<div class="control-group small">
+    <label class="control-label">Apellidos:
+        <span class="state-required">(<b>*</b>)</span>
+    </label>
+    <div class="controls">
+        <input data-ng-model="apellido" type="text" class="span6">
+    </div>
+</div>
+<div class="control-group small">
+    <label class="control-label">Telefono:
+        <span class="state-required">(<b>*</b>)</span>
+    </label>
+    <div class="controls">
+        <input data-ng-model="telefono" type="text" class="span6">
+    </div>
+</div>
+<button class="btn btn-blue" data-ng-disabled="nombre==undefined || nombre=='' || apellido==undefined || apellido=='' || telefono==undefined || telefono==''" data-ng-click="clickOpcion()">Continuar Paso 3</button>
+<br>
+<br>

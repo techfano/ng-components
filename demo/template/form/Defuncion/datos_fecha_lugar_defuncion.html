@@ -1,0 +1,237 @@
+<fieldset class="form-horizontal">
+    <h2 class="bordeinferior">Datos Relativos a la Fecha y Lugar de Defunción</h2>
+    <div class="bd">
+        
+        <div class="row-fluid">
+            
+            <div class="span6">
+                <div class="mod">
+                    <div class="bd">
+                        <div class="control-group small">
+                            <label class="control-label">Murio en:
+                                <span class="state-required">(<b>*</b>)</span>
+                            </label>
+                            <div class="controls">
+                                <select>
+                                    <option>option</option>
+                                    <option>option</option>
+                                    <option>option</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-special">
+                        
+                            <div class="control-group large">
+                                <div class="controls">
+                                   <input type="text" class="span12">
+                                   <span class="help-inline">Nombre del hospital , institución u otro lugar</span>
+                                </div>
+                            </div>
+                            <div class="control-group small">
+                                <label class="control-label">Nació muerto:
+                                    <span class="state-required">(<b>*</b>)</span>
+                                </label>
+                                <div class="controls">
+                                    <label class="radio inline" for="radioId">
+                                        <input type="radio">
+                                        Si
+                                    </label>
+                                    <label class="radio inline" for="radioId">
+                                        <input type="radio">
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                    
+                        </div>
+                        
+                        
+                        <div class="control-group small">
+                            <label class="control-label">Nº de Semanas de Embarazo:
+                                <span class="state-required">(<b>*</b>)</span>
+                            </label>
+                            <div class="controls">
+                                <input class="span6" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+            
+            <div class="span6">
+                <div class="mod">
+                    <div class="bd">
+                    
+                        <div class="control-group small">
+                            <label class="control-label"><input type="radio"> Extranjero</label>                                                
+                        </div>
+                        <div class="control-group small">
+                            <label class="control-label">Provincia:
+                                <span class="state-required">(<b>*</b>)</span>
+                            </label>
+                            <div class="controls">
+                                <select>
+                                    <option>option</option>
+                                    <option>option</option>
+                                    <option>option</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group small">
+                            <label class="control-label">Cantón:
+                                <span class="state-required">(<b>*</b>)</span>
+                            </label>
+                            <div class="controls">
+                                <select>
+                                    <option>option</option>
+                                    <option>option</option>
+                                    <option>option</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group small">
+                            <label class="control-label">Distrito:
+                                <span class="state-required">(<b>*</b>)</span>
+                            </label>
+                            <div class="controls">
+                                <select>
+                                    <option>option</option>
+                                    <option>option</option>
+                                    <option>option</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="bordesuperior">
+                            <div class="control-group small">
+                                <label class="control-label">País:
+                                    <span class="state-required">(<b>*</b>)</span>
+                                </label>
+                                <div class="controls">
+                                    <select>
+                                        <option>option</option>
+                                        <option>option</option>
+                                        <option>option</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="control-group small">
+                                <label class="control-label">Lugar:
+                                    <span class="state-required">(<b>*</b>)</span>
+                                </label>
+                                <div class="controls">
+                                    <input class="span6" type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+        
+        <div class="mod">
+        
+            <div class="bd">
+                <div class="form-special-horizontal">
+                    <div class="control-group small">
+                        <label class="control-label">Fecha de Muerte:</label>
+                        <div class="controls">
+                            <div class="input-append">
+                                <input type="text" data-ng-change="cambiarDesde()" bs-datepicker="" data-date-format="dd/mm/yyyy" data-ng-keyup="keyupDesde()" ng-model="datepickerdesde.date" value="" id="inputdesde" class="input-medium ng-pristine ng-valid">
+                                <button data-toggle="datepicker" class="btn" type="button"><i class="icon-calendar"></i></button>
+                            </div>
+                        </div>
+                    </div>                                                            
+                </div>
+            </div>
+        </div>
+        
+        <div class="mod">
+        
+            <div class="bd">
+                <div class="control-group mini">
+                    <label class="control-label"><input type="radio"> Extranjero</label>                                                
+                </div>
+            
+                <div class="form-special">
+
+                    <div class="control-group medium">
+                        <label class="control-label">Provincia:
+                            <span class="state-required">(<b>*</b>)</span>
+                        </label>
+                        <div class="controls">
+                            <select>
+                                <option value="option">option</option>
+                                <option value="option">option</option>
+                                <option value="option">option</option>
+                            </select>
+                        </div>
+                    </div>                                
+                    <div class="control-group medium">
+                        <label class="control-label">Cantón:
+                            <span class="state-required">(<b>*</b>)</span>
+                        </label>
+                        <div class="controls">
+                            <select>
+                                <option value="option">option</option>
+                                <option value="option">option</option>
+                                <option value="option">option</option>
+                            </select>
+                        </div>
+                    </div>       
+                    <div class="control-group medium">
+                        <label class="control-label">Distrito:
+                            <span class="state-required">(<b>*</b>)</span>
+                        </label>
+                        <div class="controls">
+                            <select>
+                                <option value="option">option</option>
+                                <option value="option">option</option>
+                                <option value="option">option</option>
+                            </select>
+                        </div>
+                    </div>
+                
+                    <div class="control-group medium">
+                        <label class="control-label">Cementerio:
+                            <span class="state-required">(<b>*</b>)</span>
+                        </label>
+                        <div class="controls">
+                            <input type="text">
+                        </div>
+                    </div>
+                </div> 
+                
+                
+                <div class="control-group small">
+                    <label class="control-label">País:
+                        <span class="state-required">(<b>*</b>)</span>
+                    </label>
+                    <div class="controls">
+                        <select>
+                            <option>option</option>
+                            <option>option</option>
+                            <option>option</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="control-group small">
+                    <label class="control-label">Lugar:
+                        <span class="state-required">(<b>*</b>)</span>
+                    </label>
+                    <div class="controls">
+                        <input class="span6" type="text">
+                    </div>
+                </div>   
+            
+            </div>
+        
+        
+        </div>
+        
+    </div>   
+                                                        
+</fieldset>  

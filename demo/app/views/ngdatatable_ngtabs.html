@@ -1,0 +1,98 @@
+<h1>ngDataTable</h1>
+
+<div class="bs-callout bs-callout-info">
+  <h3>ngTabs con ngDatatable</h3>
+</div>
+
+<ng-tabs>
+
+    <ng-pane title="Tab1">
+      <h5>Panel1</h5>
+      
+      <ng-datatable stoptions="optionstab">
+      </ng-datatable>
+
+    </ng-pane>
+    
+    <ng-pane title="Tab2">
+      <h5>Panel2</h5>
+    
+    <div ng-include="'template/form/Defuncion/datos_progenitores.html'"></div>    
+
+    </ng-pane>
+
+</ng-tabs>
+
+</br>
+<p>Inicializar el componente ngTabs de la siguiente manera:</p>
+
+<article class="mod alpha">
+  <div class="hd"><h3>en el View</h3></div>
+  <div class="bd">
+    <pre class="brush: js;">
+
+      &ltng-tabs&gt
+
+          &ltng-pane title="Tab1"&gt
+            &lth5&gtPanel1&lt/h5&gt
+            
+            <span class="str">&ltng-datatable stoptions="options"&gt&lt/ng-datatable&gt</span>
+
+          &lt/ng-pane&gt
+          
+          &ltng-pane title="Tab2"&gt
+            &lth5&gtPanel2&lt/h5&gt
+          
+          <span class="str">&ltdiv ng-include="'template/form/Defuncion/datos_progenitores.html'"&gt&lt/div&gt 
+          </span>  
+
+          &lt/ng-pane&gt
+
+      &lt/ng-tabs&gt
+
+    </pre>
+
+    
+  </div>
+</article>
+
+<article class="mod alpha">
+  <div class="hd"><h3>en el Controller</h3></div>
+  <div class="bd">
+    <pre class="brush: js;">
+      
+    $scope.options={
+             ngDatatable:{
+               theads:[{title:'Id'},
+                 {title:'Nombre'},
+                 {title:'Apellidos'},
+                 {title:'Telefono'},
+                 {title:'Correo'},
+                 {title:'Dirección'}],
+               data:[{x1:1,x2:'Pepe',x3:'Pepe',x4:'12345678',x5:'pepe@scytl.com',x6:'Dirección1'},
+                {x1:2,x2:'Perro',x3:'Perro',x4:'12345678',x5:'perro@scytl.com',x6:'Dirección1'},
+                {x1:3,x2:'Robot',x3:'Robot',x4:'12345678',x5:'robot@scytl.com',x6:'Dirección1'},
+                {x1:4,x2:'Pollo',x3:'Pollo',x4:'12345678',x5:'pollo@scytl.com',x6:'Dirección1'},
+                {x1:5,x2:'Kiko',x3:'Kiko',x4:'12345678',x5:'kiko@scytl.com',x6:'Dirección1'
+              }],
+
+              icons:[{name:'Ver Detalle',
+                      class:'icon-scytl-search',
+                      actionTab:{
+                        showTab:2,
+                        call:function(row){
+                          alert(JSON.stringify(row));
+                          $scope.nombreUsuario=row.x2;
+                          $scope.apellidoUsuario=row.x3;
+
+                        }
+                     }
+              }]
+
+            }
+          }
+        
+    </pre>
+  </div>
+</article>
+

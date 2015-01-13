@@ -1,0 +1,38 @@
+<h1>ngDataTable</h1>
+<br>
+<div class="bs-callout bs-callout-info">
+  <h3>Utilizando Data Remota de un Webservice Rest</h3>
+  (con paginacion, busqueda por cualquier criterio y seleccion de cantidad de filas) usando la propiedad <b>dataAjax</b>
+</div>
+
+<div class="bs-callout bs-callout-info">
+  <h3>URL de consulta completa en GET</h3>
+  <p><a href="http://acastaneda.lima.scytl.net:90/webservice/index.php/service/obtain/remote/users?appId=12345&numeroPagina=1&numeroRegistros=20">http://acastaneda.lima.scytl.net:90/webservice/index.php/service/obtain/remote/users?appId=12345&numeroPagina=1&numeroRegistros=20</a></p>
+</div>
+
+<div class="bs-docs-example">
+
+  <ng-datatable stoptions="optionsRemote">
+  </ng-datatable>
+
+</div>
+
+<br /><br />
+  <p>Inicializar el componente ngDataTable de la siguiente manera:</p>
+
+<article class="mod alpha">
+  <div class="hd"><h3>en la Vista</h3></div>
+  <div class="bd">
+    <pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><<span class="tag">ng-datatable stoptions=</span> <span class="atv">"optionsRemote"</span>></br></li><li class="L1"><<span class="tag">/ng-datatable</span>></li></ol></pre>
+  </div>
+</article>
+
+<article class="mod alpha">
+  <div class="hd"><h3>en el Controlador</h3></div>
+  <div class="bd">
+    
+    <pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="pln">$scope.parametros={</span></br></li><li class="L1"><span class="pln">&nbsp;&nbsp;&nbsp;appId:<span class="str">"12345"</span>,</span></br></li><li class="L1"><span class="pln">&nbsp;&nbsp;&nbsp;numeroPagina:<span class="str">1</span>,</span></br></li><li class="L1"><span class="pln">&nbsp;&nbsp;&nbsp;numeroRegistros:<span class="str">20</span>,</span></br></li><li class="L0"><span class="pln">}</span></br></li><li class="L0"><span class="pln">$scope.optionsRemote={</span></br></li><li class="L1"><span class="pln">&nbsp;&nbsp;&nbsp;ngDatatable:{</span></br></li><li class="L2"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;theads:[{title:</span><span class="str">'Id'</span><span class="pln">},</span></br></li><li class="L3"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{title:</span><span class="str">'Nombre'</span><span class="pln">},</span></br></li><li class="L4"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{title:</span><span class="str">'Apellidos'</span><span class="pln">},</span></br></li><li class="L5"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{title:</span><span class="str">'Telefono'</span><span class="pln">},</span></br></li><li class="L6"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{title:</span><span class="str">'Correo'</span><span class="pln">},</span></br></li><li class="L7"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{title:<span class="str">'Dirección'</span>}],</span></br></li><li class="L8"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;define:{totalRows:<span class="str">'data.numeroRegistros'</span>,</span></li><li class="L8"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dataObject:<span class="str">'data.lista'</span>},</span></li><li class="L8"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;dataAjax:{</span></li><li class="L8"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url:<span class="str">'obtain/remote/users'</span>,</span></li><li class="L8"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parameters:$scope.parametros</span></li><li class="L8"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;}</span></li><li class="L8"><span class="pln">&nbsp;&nbsp;}</span></li><li class="L8"><span class="pln">}</span></li></ol></pre>
+
+  </div>
+</article>
+

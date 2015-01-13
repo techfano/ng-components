@@ -1,0 +1,33 @@
+<h1>ngDataTable</h1>
+<br/>
+<div class="bs-callout bs-callout-info">
+  <h3>Ejemplo Simple</h3>
+  (con renderizado de un array de objetos con la propiedad <b>Data</b>)
+</div>
+
+<div class="bs-docs-example">
+
+	<ng-datatable stoptions="options">
+	</ng-datatable>
+
+</div>
+
+<br /><br />
+<p>Inicializar el componente ngDataTable de la siguiente manera:</p>
+
+<article class="mod alpha">
+	<div class="hd"><h3>en la Vista</h3></div>
+	<div class="bd">
+		<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><<span class="tag">ng-datatable stoptions=</span> <span class="atv">"options"</span>></br></li><li class="L1"><<span class="tag">/ng-datatable</span>></li></ol></pre>
+	</div>
+</article>
+
+<article class="mod alpha">
+  <div class="hd"><h3>en el Controlador</h3></div>
+  <div class="bd">
+
+    <pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="pln">$scope.options={</span></br></li><li class="L1"><span class="pln">&nbsp;&nbsp;&nbsp;ngDatatable:{</span></br></li><li class="L2"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;theads:[{title:</span><span class="str">'Id'</span><span class="pln">},</span></br></li><li class="L3"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{title:</span><span class="str">'Nombre'</span><span class="pln">},</span></br></li><li class="L4"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{title:</span><span class="str">'Apellidos'</span><span class="pln">},</span></br></li><li class="L5"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{title:</span><span class="str">'Telefono'</span><span class="pln">},</span></br></li><li class="L6"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{title:</span><span class="str">'Correo'</span><span class="pln">},</span></br></li><li class="L7"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{title:<span class="str">'Dirección'</span>}],</span></br></li><li class="L8"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data:[{x1:</span><span class="str">1</span>,<span class="pln">x2:</span><span class="str">'Pepe'</span><span class="pln">,x3:</span><span class="str">'Pepe'</span><span class="pln">,x4:</span><span class="str">'12345678'</span><span class="pln">,x5:</span><span class="str">'pepe@scytl.com'</span><span class="pln">,x6:</span><span class="str">'Dirección1'</span><span class="pln">},</span></br></li><li class="L8"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{x1:</span><span class="str">2</span>,<span class="pln">x2:</span><span class="str">'Perro'</span><span class="pln">,x3:</span><span class="str">'Perro'</span><span class="pln">,x4:</span><span class="str">'12345678'</span><span class="pln">,x5:</span><span class="str">'perro@scytl.com'</span><span class="pln">,x6:</span><span class="str">'Dirección1'</span><span class="pln">},</span></br></li><li class="L8"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{x1:</span><span class="str">3</span>,<span class="pln">x2:</span><span class="str">'Robot'</span><span class="pln">,x3:</span><span class="str">'Robot'</span><span class="pln">,x4:</span><span class="str">'12345678'</span><span class="pln">,x5:</span><span class="str">'robot@scytl.com'</span><span class="pln">,x6:</span><span class="str">'Dirección1'</span><span class="pln">},</span></br></li><li class="L8"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{x1:</span><span class="str">4</span>,<span class="pln">x2:</span><span class="str">'Pollo'</span><span class="pln">,x3:</span><span class="str">'Pollo'</span><span class="pln">,x4:</span><span class="str">'12345678'</span><span class="pln">,x5:</span><span class="str">'pollo@scytl.com'</span><span class="pln">,x6:</span><span class="str">'Dirección1'</span><span class="pln">},</span></br></li><li class="L8"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{x1:</span><span class="str">5</span>,<span class="pln">x2:</span><span class="str">'Kiko'</span><span class="pln">,x3:</span><span class="str">'Kiko'</span><span class="pln">,x4:</span><span class="str">'12345678'</span><span class="pln">,x5:</span><span class="str">'kiko@scytl.com'</span><span class="pln">,x6:</span><span class="str">'Dirección1'</span><span class="pln"></span></br></li><li class="L14"><span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;}],</span></br></li><li class="L15"><span class="pln">&nbsp;&nbsp;&nbsp;}</span></br></li><li class="L4"><span class="pln">}</span></li></ol></pre>
+
+  </div>
+</article>
+ 

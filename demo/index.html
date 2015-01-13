@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ngComponents v0.6</title>
+    <link href="static/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="static/css/docs.css" rel="stylesheet" />
+    <link href="static/css/prettify.css" rel="stylesheet" />
+    <link href="static/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="static/css/oocss.css" rel="stylesheet" />
+    <link href="static/css/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="static/css/style.css" rel="stylesheet" />
+    <link href="static/css/loader.css" rel="stylesheet" />
+    <link href="static/css/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" />
+</head>
+<body data-ng-controller="appController">
+    <!---->
+    <div id="loading-mask" style=""></div>
+    <div id="loading">
+        <div class="loading-indicator">
+            <img src="static/loading.gif" width="32" height="32" style="margin-right: 8px; float: left; vertical-align: top;" />
+            ngComponents v0.6
+            <br />
+            <span id="loading-msg">Cargando recursos...</span>
+        </div>
+    </div>
+    <!---->
+    <!-- <div id="dashboard" ng-controller="MenuCtrl"> -->
+    <div id="dashboard">
+
+        <!-- CABECERA -->
+        <!--  <header id="cabecera">
+            <a href="index.html" class="logo">
+                <img src="static/img/tse-logo.png" alt="TSE logo"></a>
+                <div class="titulo-sirc">                 
+                <p id="modulo_sirc" class="sub1-titulo-sirc">Administración del Registro Civil</p>                
+                <p id="sistema_sirc" class="sub2-titulo-sirc">Sistema de Información Registral Civil Electoral</p>
+            </div>
+            <div id="nombre-usuario">
+                <i class="iconos-nombre-usuario"></i>{{userRoles.userName}}
+            </div>
+            <div id="rol-usuario">
+                <i class="iconos-rol-usuario"></i>{{userRoles.userRol}}
+            </div>
+
+        </header> -->
+        <!-- NAVEGACION PRINCIPAL -->
+        <!-- <nav id="navegacion-principal" class="menu-items-6">
+            
+
+        </nav> -->
+        <section id="contenedor-principal">
+            <!-- LATERAL MENU -->
+            <aside id="lateral-menu">
+
+                <div class="accordion" id="accordion2">
+                    
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                          <a class="accordion-toggle"  data-parent="#accordion2" href="#/inicio">
+                            <i class="icon-ok-circle"></i>
+                            Inicio
+                          </a>
+                        </div>
+                    </div>
+
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle"  data-parent="#accordion2" href="#ngalert">
+                                <i class="icon-ok-circle"></i>
+                                ngAlert
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle"  data-parent="#accordion2" href="#ngaccordeon">
+                                <i class="icon-ok-circle"></i>
+                                ngACordeon
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle"  data-parent="#accordion2" href="#ngtab">
+                                <i class="icon-ok-circle"></i>
+                                ngTabs
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- <div class="accordion-group">
+                    
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                                <i class="icon-ok-circle"></i>
+                                ngDatatable
+                            </a>
+                        </div>
+                    
+                        <div id="collapseTwo" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <li class="">
+                                    <a href="#/ngdatatable_simple">Ejemplo Simple</a>
+                                </li>
+                                <li class="">
+                                    <a href="#/ngdatatable_remota">Con data remota</a>
+                                </li>
+                                <li class="">
+                                    <a href="#/ngdatatable_hidecenter">Esconder y centrar Columnas</a>
+                                </li>
+                                <li class="">
+                                    <a href="#/ngdatatable_multiples">Multiples Tablas</a>
+                                </li>
+                                <li class="">
+                                    <a href="#/ngdatatable_iconsactions">Iconos y acciones de retorno</a>
+                                </li>
+                                <li class="">
+                                    <a href="#/ngdatatable_eventos">Carga dinamica de diferentes tablas en eventos</a>
+                                </li>
+                                <li class="">
+                                    <a href="#/ngdatatable_ngtabs">ngDatatable interactuando con ngTabs</a>
+                                </li>
+                                <li class="">
+                                    <a href="#/ngdatatable_rowdetail">Detalles por cada fila</a>
+                                </li>
+                                <li class="">
+                                    <a href="#/ngdatatable_especificaciones">ngDatatable Especificaciones</a>
+                                </li>
+                            </div>
+                        </div>
+                    
+                    </div> -->
+
+                    <!-- <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle"  data-parent="#accordion2" href="#nglitetable">
+                                <i class="icon-ok-circle"></i>
+                                ngLitetable
+                            </a>
+                        </div>
+                    </div> -->
+
+                   <!--  <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle"  data-parent="#accordion2" href="#ngwizard">
+                                <i class="icon-ok-circle"></i>
+                                ngWizard
+                            </a>
+                        </div>
+                    </div> -->
+
+                </div>
+
+            </aside>
+            <!-- CUERPO DATA -->
+            <section id="cuerpo">
+                <div id="cuerpo-principal">
+                    <div id="cuerpo-dentro" data-ng-view>
+
+                    </div>
+                </div>
+            </section>
+
+        </section>
+
+        <footer id="pie">
+            <p>
+                &copy; Copyright 2013
+            </p>
+        </footer>
+
+
+    </div>
+
+   
+
+    <!-- data -->
+    <script type="text/javascript" src="app/data/app.data.mensajes.js"></script>
+    <!-- data -->
+    <script type="text/javascript" src="app/data/app.data.config.js"></script>
+    <!--JQuery Library-->
+    <script type="text/javascript" src="static/js/jquery.js"></script>
+    <script type="text/javascript" src="static/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <!---->
+    <script src="static/js/bootstrap.min.js"></script>
+    
+    <!--AngularJS Library-->
+    <script type="text/javascript" src="static/js/angular/angular.min.js"></script>
+
+    <!--DIRECTIVAS-->
+
+    <script src="urls.js"></script>
+    
+    
+    <script data-main="app/main" src="static/js/require.js"></script>
+
+
+
+</body>
+</html>

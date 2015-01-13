@@ -1,0 +1,32 @@
+<div class="accordion" id="acordion3{{$index}}">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#acordion3{{$index}}" href="#collapseOne5{{$index}}">
+        <span class="badge"><b>{{templates.lista.tramites.length}}</b></span><span> Tramites en proceso</span> 
+      </a>
+    </div>
+    <div id="collapseOne5{{$index}}" class="accordion-body collapse">
+      <div class="accordion-inner">
+
+            <ng-litetable heads="configuration.tramites" data="templates.lista.tramites">
+            </ng-litetable>
+
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#acordion3{{$index}}" href="#collapseTwo6{{$index}}">
+        <span class="badge"><b>{{templates.lista.anotaciones.length}}</b></span><span> Anotaciones Asociadas</span>
+      </a>
+    </div>
+    <div id="collapseTwo6{{$index}}" class="accordion-body collapse">
+      <div class="accordion-inner">
+        
+        <ng-litetable heads="configuration.anotaciones" data="templates.lista.anotaciones">
+        </ng-litetable>
+
+      </div>
+    </div>
+  </div>
+</div>

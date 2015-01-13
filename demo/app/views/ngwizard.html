@@ -1,0 +1,255 @@
+<h1>ngWizard</h1>
+<br>
+<br>
+
+<ng-tabs show-all="true">
+	
+	<ng-pane title="Ejemplo ngWizard">
+
+		<ng-wizard click="habilitarClick" stoptions="wizoptions">
+
+			<wiz-content title="Paso A">
+
+				<h3>Paso A</h3>
+				<br>
+
+				<ng-alert stoptions= "alertone">
+				</ng-alert>
+
+				<label>Opciones
+				</label>
+				<select data-ng-change="cambiarOpcion(opcion)" data-ng-init="opcion=0" data-ng-model="opcion">
+					<option value="0">- Seleccione -</option>
+					<option value="1">Activar Paso 2</option>
+				</select>
+				<br><br><br>
+
+			</wiz-content>
+
+			<wiz-content title="Paso B">
+
+				<h3>Paso B</h3>
+
+				<ng-alert stoptions= "alerttwo">
+				</ng-alert>
+
+				<ng-include src="'template/form/basic.html'" scope="" onload=""></ng-include>
+				
+			</wiz-content>
+
+			<wiz-content title="Paso C">
+
+				<h3>Paso C</h3>
+				<br>
+
+				<ng-alert stoptions= "alertthree">
+				</ng-alert>
+
+				<input type="text" data-ng-model="busqueda" />
+				<br>
+				<button class="btn btn-blue" data-ng-click="buscarInclude(); mostrarInclude=true" data-ng-disabled>Buscar</button>
+				<br><br>
+				<ng-include data-ng-show="mostrarInclude" src="'template/form/basic.html'" scope="ngwizardController"></ng-include>
+				
+			</wiz-content>
+
+			<wiz-content title="Paso D">
+
+				<h3>Paso D</h3>
+				<br>
+
+			</wiz-content>
+
+			<div class="well well-large">
+
+				<div class="pull-left">
+
+					<button class="btn btn-blue" data-ng-click="mostrarTodos()">
+						Mostrar Todos los Pasos
+					</button>
+
+					<button class="btn btn-blue" data-ng-click="mostrarAlgunos()">
+						Mostrar solo Pasos A y C
+					</button>
+
+					<button class="btn btn-blue" data-ng-click="esconderAlgunos()">
+						Ocultar solo Pasos A y C
+					</button>
+
+				</div>
+
+				<wiz-controls class="pull-right">
+
+				</wiz-controls>	
+
+			</div>
+
+		</ng-wizard>
+
+	</ng-pane>
+	
+	<ng-pane title="Vista">
+
+		<pre>
+
+		<span style="color:#03A4C9">&ltng-wizard click="habilitarClick" stoptions="wizoptions"&gt</span>
+
+			<span style="color:#03A4C9">&ltwiz-content title="Paso A"&gt</span>
+
+				&lth3&gtPaso1&lt/h3&gt
+				&ltbr&gt
+				<span style="color:#03A4C9">
+				&ltng-alert stoptions= "alertone"&gt
+				&lt/ng-alert&gt
+				</span>
+
+				&ltlabel&gtOpciones
+				&lt/label&gt
+				&ltselect data-ng-change="cambiarOpcion(opcion)" data-ng-init="opcion=0" data-ng-model="opcion"&gt
+					&ltoption value="0"&gt- Seleccione -&lt/option&gt
+					&ltoption value="1"&gtActivar Paso 2&lt/option&gt
+				&lt/select&gt
+				&ltbr&gt&ltbr&gt&ltbr&gt
+
+			<span style="color:#03A4C9">&lt/wiz-content&gt</span>
+
+			<span style="color:#03A4C9">&ltwiz-content title="Paso B"&gt</span>
+
+				&lth3&gtPaso2&lt/h3&gt
+
+				<span style="color:#03A4C9">
+				&ltng-alert stoptions= "alerttwo"&gt
+				&lt/ng-alert&gt
+				</span>
+
+				<span class="str">&ltng-include src="'template/form/basic.html'" scope="" onload=""&gt&lt/ng-include&gt</span>
+				
+			<span style="color:#03A4C9">&lt/wiz-content&gt</span>
+
+			<span style="color:#03A4C9">&ltwiz-content title="Paso C"&gt</span>
+
+				&lth3&gtPaso3&lt/h3&gt
+				&ltbr&gt
+
+				<span style="color:#03A4C9">
+				&ltng-alert stoptions= "alertthree"&gt
+				&lt/ng-alert&gt
+				</span>
+
+				&ltinput type="text" data-ng-model="busqueda" /&gt
+				&ltbr&gt
+				&ltbutton class="btn btn-blue" data-ng-click="buscarInclude(); mostrarInclude=true" data-ng-disabled&gtBuscar&lt/button&gt
+				&ltbr&gt&ltbr&gt
+				<span class="str">&ltng-include data-ng-show="mostrarInclude" src="'template/form/basic.html'" scope="ngwizardController"&gt&lt/ng-include&gt</span>
+				
+			<span style="color:#03A4C9">&lt/wiz-content&gt</span>
+
+
+
+			&ltdiv class="well well-large"&gt
+
+				<span style="color:#03A4C9">&ltwiz-controls class="pull-right"&gt</span>
+
+				<span style="color:#03A4C9">&lt/wiz-controls&gt</span>
+
+			&lt/div&gt
+
+		<span style="color:#03A4C9">&lt/ng-wizard&gt</span>
+
+		</pre>
+
+	</ng-pane>
+
+	<ng-pane title="Controlador">
+
+		<pre>
+
+		<span style="color:#888">// Inicializando la directiva ngWizard</span>
+		$scope.wizoptions={
+	            show:'all',
+	            disabled:true,
+	            titleNext:'Siguiente',
+	            titleBack:'Anterior'
+	        };
+
+	    <span style="color:#888">// Inicializando las directivas ngAlert</span>
+
+	        $scope.alertone={
+		  message:'Selecciona una opción para continuar.',
+		  type:'info',
+		  show:true,
+		  hide:{auto:false,click:true,time:0}
+		}
+
+		$scope.alerttwo={
+		  message:'Ingresa todos los datos y presiona el boton guardar para continuar.',
+		  type:'info',
+		  show:true,
+		  hide:{auto:false,click:true,time:0}
+		}
+
+		$scope.alertthree={
+		  message:'Realiza una busqueda y presiona el boton guardar para finalizar.',
+		  type:'info',
+		  show:true,
+		  hide:{auto:false,click:true,time:0}
+		}
+
+			<span style="color:#888">// Realizando las funciones para los eventos</span>
+	        
+	        $scope.cambiarOpcion=function(value){
+
+	        	if(value==1){
+
+	        		$scope.wizoptions.disabled=false; <span style="color:#888">// Habilitando el siguiente paso del wizard</span>
+	   
+	        	}else{
+
+	        		$scope.wizoptions.disabled=true; <span style="color:#888">// Deshabilitando el siguiente paso del wizard</span>
+
+	        	}
+
+	        }
+
+	        $scope.clickOpcion=function(){
+
+
+	        	$scope.wizoptions.disabled=false; <span style="color:#888">// Habilitando el siguiente paso del wizard</span>
+	        	$scope.habilitarClick=true;  <span style="color:#888">// Habilitando el click en las pestañas</span>
+
+	        }
+
+	        $scope.buscarInclude=function(){
+
+	        	<span style="color:#888">// Pasando datos al ngInclude con el attrib "scope="</span>
+
+	        	$scope.nombre="Nombre";
+	        	$scope.apellido="Apellido";
+	        	$scope.telefono="785563332";
+
+	        }
+
+	        $scope.mostrarAlgunos=function(){
+	        	$scope.wizoptions.hide=[1,3]; <span style="color:#888">// Ocultando los pasos 2 y 3 del Wizard</span>
+	        }
+
+	        $scope.esconderAlgunos=function(){
+	        	$scope.wizoptions.hide=[1,3]; <span style="color:#888">// Mostrando los pasos 2 y 3 del Wizard</span>
+	        }
+
+	        $scope.mostrarTodos=function(){
+	        	$scope.wizoptions.hide="all"; <span style="color:#888">// Ocultando todos los pasos del Wizard</span>
+	        }
+
+		</pre>
+
+	</ng-pane>
+
+</ng-tabs>
+
+
+
+
+<div class="bs-callout bs-callout-info">
+	<p>Inicializar el componente ngWizard de la siguiente manera:</p>
+</div>

@@ -1,0 +1,77 @@
+<form name="frmSolicitanteDatos" novalidate>
+	<fieldset class="form-horizontal box-border">
+    	<legend class="box-border">Persona Que Presenta</legend>
+        <label class="radio inline" data-ng-show="mostrarRadioNacional">
+			<input type="radio" data-ng-change="cambiarTipoSolicitante()" data-ng-model="modeloPersona.tipo" value="N">
+			Costarricense
+		</label>
+		<label class="radio inline" data-ng-show="mostrarRadioExtranjero">
+			<input type="radio" data-ng-change="cambiarTipoSolicitante()" data-ng-model="modeloPersona.tipo" value="E">
+			Extranjero
+		</label>
+		<div data-ng-show="mostrarSolicitanteNacional">
+			<div class="control-group ng-class: {error:frmSolicitanteDatos.cedulaSolicitante.$error.uicedula}" data-ng-show="mostrarNombreXCedula">
+				<label class="control-label">
+					N° de Cédula:
+				</label>
+				<div class="controls">
+					<input type="text" data-ng-model="modeloPersona.cedula" name="cedulaSolicitante" data-ui-cedula class="span2">
+					<button class="btn btn-blue" data-ng-click="clicBuscarPersona()" type="button">
+                        Buscar
+                    </button>
+					<div class="help-block" data-ng-show="frmSolicitanteDatos.cedulaSolicitante.$error.uicedula"><i class="icon-scytl-error"></i>Cédula inválida</div>
+				</div>
+				<div data-ng-show="mostrarAlertaCedula" class="alert alert-error" style="margin-top:15px;">
+                    <i></i>
+                    <p class="cell">{{msjAlertaCedula}}</p>
+                    <button data-dismiss="alert" class="close" type="button">Cerrar</button>
+                </div>
+			</div>
+			<div class="control-group big ng-class: {error:frmSolicitanteDatos.nombreSolicitanteNacional.$error.minlength||frmSolicitanteDatos.nombreSolicitanteNacional.$error.maxlength}" data-ng-show="mostrarSolitanteXCedula">
+                <label class="control-label">Nombre Completo:
+                </label>
+                <div class="controls">
+                	<input type="text" data-ng-model="modeloPersona.nombreNacional" name="nombreSolicitanteNacional" data-ng-required="true" data-ng-minlength="1" data-ng-maxlength="15" class="span3" data-ng-disabled="true" data-ng-class="{'input-preload':iconLoadingCedula}">
+                	<mensaje tipo="MSG009" visible="frmSolicitanteDatos.nombreSolicitanteNacional.$error.minlength||frmSolicitanteDatos.nombreSolicitanteNacional.$error.maxlength"></mensaje>  </div>             
+            </div>
+		</div>
+		<div data-ng-show="mostrarSolicitanteExtranjero">
+			<div class="control-group big">
+                <label class="control-label">Tipo Documento: 
+                	<span class="state-required">(<b>*</b>)</span>
+                </label>
+                <div class="controls">
+                	<select data-ng-model="modeloPersona.tipoDocumento" data-ng-change="cambiarDocumentoNoAsiento()" data-ng-options="doc.descripcion for doc in listaTipoDocumentoNoAsiento" data-ng-disabled="disabledTipoDocumentoNoAsiento" data-ng-show="!mostrarInputConfirmacion"></select>
+                    <input type="text" data-ng-model="modeloPersona.tipoDocumento.descripcion" class="span4" data-ng-disabled="deshabilitadoConfirmacion" data-ng-show="mostrarInputConfirmacion">
+                </div>
+            </div>
+            <div class="control-group big ng-class: {error:frmSolicitanteDatos.numeroIdentificacion.$error.minlength||frmSolicitanteDatos.numeroIdentificacion.$error.maxlength||frmSolicitanteDatos.numeroIdentificacion.$error.pattern}" >
+                <label class="control-label">Número de Identificación:
+                    <span class="state-required">(<b>*</b>)</span>
+                </label>
+                <div class="controls">
+                    <input type="text" data-ng-model="modeloPersona.numeroDocumento" name="numeroIdentificacion" data-ng-required="true" data-ng-minlength="1" data-ng-maxlength="15" data-ng-pattern="/^[a-zA-Z\d\-_\s]+$/" data-ng-disabled="deshabilitadoConfirmacion">
+                    <mensaje tipo="MSG009" visible="frmSolicitanteDatos.numeroIdentificacion.$error.minlength||frmSolicitanteDatos.numeroIdentificacion.$error.maxlength||frmSolicitanteDatos.numeroIdentificacion.$error.pattern"></mensaje>        
+                </div>           
+            </div>
+            <div class="control-group big ng-class: {error:frmSolicitanteDatos.nombreTitular.$error.minlength||frmSolicitanteDatos.nombreTitular.$error.maxlength}">
+                <label class="control-label">Nombre Completo Titular:
+                    <span class="state-required">(<b>*</b>)</span>
+                </label>
+                <div class="controls">
+                	<input type="text" data-ng-model="modeloPersona.nombreExtranjero" name="nombreTitular" data-ng-required="true" data-ng-minlength="1" data-ng-maxlength="15" class="span4" data-ng-disabled="deshabilitadoConfirmacion">
+                	<mensaje tipo="MSG009" visible="frmSolicitanteDatos.nombreTitular.$error.minlength||frmSolicitanteDatos.nombreTitular.$error.maxlength"></mensaje>     
+                </div>              
+            </div>
+            <div class="control-group big">
+                <label class="control-label">Nacionalidad: 
+                	<span class="state-required">(<b>*</b>)</span>
+                </label>
+                <div class="controls">
+                	<select data-ng-model="modeloPersona.nacionalidad" data-ng-change="" data-ng-options="nac.descripcion for nac in listaNacionalidad" data-ng-disabled="disabledNacionalidad" data-ng-show="!mostrarInputConfirmacion"></select>
+                    <input type="text" data-ng-model="modeloPersona.nacionalidad.descripcion" class="span4" data-ng-disabled="deshabilitadoConfirmacion" data-ng-show="mostrarInputConfirmacion">
+           		 </div>
+            </div>
+        </div>
+    </fieldset>
+</form>

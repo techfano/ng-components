@@ -1,0 +1,49 @@
+<div class="modal" tabindex="-1" role="dialog" aria-labelledby="myh3" aria-hidden="true" data-file-upload="options">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> <i></i>Close </button>
+    <h3 id="myh3">Cargar Archivo</h3>
+  </div>
+  <div class="modal-body">
+          <div class="btn btn-default btn-file">
+              <i class="icon-plus"></i>
+              <span>Seleccionar Archivos</span>
+              <input type="file" name="files[]"/>
+          </div> 
+          <div class="pull-right" data-file-upload-progress="progress()"><strong>Total: {{num || 0}}%</strong></div>
+          
+          <div class="uploadify-queue-item ng-cloak" data-ng-repeat="file in queue">                  
+            
+            <div class="cancel" data-ng-hide="!file.$cancel">           
+              <a href="" data-ng-click="clicQuitarReferenciaArchivo(file)">X</a> 
+            </div>            
+            
+            <!--div class="cancel" data-ng-show="file.clear">            
+              <a href="" data-ng-click="limpiar(file)">X</a>  
+            </div -->
+
+            <div data-file-upload-progress="file.$progress()">
+              <div data-ng-show="file.done">
+                <span class="fileName">{{file.nombreArchivo}} ({{file.size | formatFileSize}})</span><span class="state-success"> <i class="icon-scytl-alert-success"></i>Listo</span><a href="" data-ng-click="eliminarArchivoTemp(file.descripcion, '', queue)">Eliminar</a>
+              </div>
+              <div data-ng-hide="file.done">
+                  <span class="fileName">{{file.name}} ({{file.size | formatFileSize}})</span><span class="data" data-ng-show="numPorcentaje"> - {{numPorcentaje}}</span>     
+              </div>                  
+              <div class="uploadify-progress" data-ng-hide="file.done">           
+                <div class="uploadify-progress-bar" data-ng-style="{width: num + '%'}"><!--Progress Bar--></div>
+              </div>
+            </div>
+			<div data-ng-show="file.error" class="control-group error">
+				<div class="controls">
+					<div class="help-block">
+			            <div><span><i class="icon-scytl-alert-error"></i>Error</span> {{file.error}}</div>			
+		            </div>
+	            </div>
+            <div></div>                
+          </div>
+        </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-blue lfloat" aria-hidden="true" data-ng-click="submit()"> Guardar </button>
+    <button class="btn lfloat" data-dismiss="modal" aria-hidden="true"> Cerrar </button>
+  </div>
+</div>

@@ -1,0 +1,251 @@
+<h1>ngTabs</h1>
+<br>
+<br>
+<div class="bs-callout bs-callout-info">
+	<h3>Ejemplo Simple</h3></br>
+	<p>Inicializar el componente ngTabs de la siguiente manera:</p>
+</div>
+
+<ng-tabs>
+
+    <ng-pane title="Tab1">
+      <h5>Panel1</h5>
+      <p>Contenido 1</p>
+
+    <action-tab icon="" title="Ocultar Tab1" action="hide" type="button" numtab="1"></action-tab>      
+      <action-tab icon="" title="Mostrar Tab2" action="show" type="button" numtab="2"></action-tab>
+      <action-tab icon="" title="Mostrar Tab3" action="show" type="button" numtab="3"></action-tab> 
+    
+    </ng-pane>
+    
+    <ng-pane title="Tab2">
+       <h5>Panel2</h5>
+       <em>Contenido 2</em>
+        <br />
+    <br />
+        <action-tab icon="icon-mail-forward" title="Mostrar Tab1" action="show" type="link" numtab="1"></action-tab>      
+      <action-tab icon="icon-mail-forward" title="Ocultar Tab2" action="hide" type="link" numtab="2"></action-tab>
+      <action-tab icon="icon-mail-forward" title="Mostrar Tab3" action="show" type="link" numtab="3"></action-tab>
+
+    </ng-pane>
+    
+    <ng-pane title="Tab3">
+       <h5>Panel3</h5>
+       <em>Contenido 3</em>
+        <br />
+    <br />
+      <action-tab icon="" title="Mostrar Tab1" action="show" type="button" numtab="1"></action-tab>
+      <action-tab icon="icon-mail-forward" title="Mostrar Tab2" action="show" type="link" numtab="2"></action-tab>
+      <action-tab icon="icon-mail-forward" title="Ocultar Tab3" action="hide" type="button" numtab="3"></action-tab>
+
+    </ng-pane>
+
+</ng-tabs>
+
+</br>
+<p>Inicializar el componente ngTabs de la siguiente manera:</p>
+
+<article class="mod alpha">
+	<div class="hd"><h3>en el View</h3></div>
+	<div class="bd">
+		<pre class="brush: js;">
+			
+			&ltng-tabs&gt
+
+			    &ltng-pane title="Tab1"&gt
+			      &lth5&gtPanel1&lt/h5&gt
+			      &ltp&gtContenido 1&lt/p&gt
+			      
+			    	&ltaction-tab icon="" title="Ocultar Tab1" action="hide" type="button" numtab="1"&gt&lt/action-tab&gt      
+			    	&ltaction-tab icon="" title="Mostrar Tab2" action="show" type="button" numtab="2"&gt&lt/action-tab&gt
+    				&ltaction-tab icon="" title="Mostrar Tab3" action="show" type="button" numtab="3"&gt&lt/action-tab&gt
+
+			    &lt/ng-pane&gt
+			    
+			    &ltng-pane title="Tab2"&gt
+			       &lth5&gtPanel2&lt/h5&gt
+			       &ltem&gtContenido 2&lt/em&gt
+			      
+			       	&ltaction-tab icon="icon-mail-forward" title="Mostrar Tab1" action="show" type="link" numtab="1"&gt&lt/action-tab&gt      
+			    	&ltaction-tab icon="icon-mail-forward" title="Ocultar Tab2" action="hide" type="link" numtab="2"&gt&lt/action-tab&gt
+    				&ltaction-tab icon="icon-mail-forward" title="Mostrar Tab3" action="show" type="link" numtab="3"&gt&lt/action-tab&gt
+
+			    &lt/ng-pane&gt
+			    
+			    &ltng-pane title="Tab3"&gt
+			       &lth5&gtPanel3&lt/h5&gt
+			       &ltem&gtContenido 3&lt/em&gt
+
+			    	&ltaction-tab icon="" title="Mostrar Tab1" action="show" type="button" numtab="1"&gt&lt/action-tab&gt
+			    	&ltaction-tab icon="icon-mail-forward" title="Mostrar Tab2" action="show" type="link" numtab="2"&gt&lt/action-tab&gt
+			    	&ltaction-tab icon="icon-mail-forward" title="Ocultar Tab3" action="hide" type="button" numtab="3"&gt&lt/action-tab&gt
+			       	
+
+			    &lt/ng-pane&gt
+
+			&lt/ng-tabs&gt
+			
+		</pre>
+	</div>
+</article>
+
+
+
+
+
+
+<br>
+<br>
+<div class="bs-callout bs-callout-info">
+	<h3>Directivas para mostrar y ocultar tabs</h3></br>
+	<p>Uso de directiva tipo boton o link <b>actionTab</b> para mostrar o ocultar los tabs llamando en base a atributos.<br>Esta directiva siempre dependera de las directivas: <b>ngTabs</b> y <b>ngPane</b> respectivamente.</p>
+</div>
+
+<pre class="brush: js;">
+
+	<span class="str">
+    &ltaction-tab icon="" title="Mostrar Tab2" action="hide" type="button" numtab="1"&gt&lt/action-tab&gt      
+    &ltaction-tab icon="" title="Mostrar Tab2" action="show" type="link" numtab="2"&gt&lt/action-tab&gt
+    &ltaction-tab icon="" title="Mostrar Tab3" action="show" type="button" numtab="3"&gt&lt/action-tab&gt  
+    </span> 
+
+</pre>
+</br>
+<div class="bs-callout bs-callout-info">
+  <h3>Especificaciones</h3></br>
+</div>
+<table class="table table-bordered table-striped">
+    <colgroup>
+      <col class="span1">
+      <col class="span7">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Atributo</th>
+        <th>Descripción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>show-all</td>
+        <td>Con el valor en TRUE se puede mostrar todas las tabs activas / &ltng-wizard show-all="TRUE"&gt </b></td>
+      </tr>
+      <tr>
+        <td>icon</td>
+        <td>Permite definir el icono a mostrarse a tra ves de una clase, ejemplo <b>icon="icon-mail-forward"</b>, solo configurar en caso de usar <b>type="link"</b></td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>Define si la directiva se comportara como boton o link segun se ponga <b>button</b> o <b>link</b></td>
+      </tr>
+      <tr>
+        <td>title</td>
+        <td>Define el texto a mostrarse</td>
+      </tr>
+      <tr>
+        <td>action</td>
+        <td>Permite ocultar o mostrar un tab</td>
+      </tr>
+      <tr>
+        <td>numtab</td>
+        <td>Define el numero de tab a ocultar o mostrar</td>
+      </tr>
+
+    </tbody>
+</table>
+
+<br>
+<br>
+<div class="bs-callout bs-callout-info">
+	<h3>Ejemplo con con templates usando ngInclude</h3>
+</div>
+
+<ng-tabs>
+
+    <ng-pane title="Tab1">
+      <h5>Panel1</h5>
+      <p>Contenido 1</p>
+      
+      <div ng-include="'template/form/Defuncion/datos_declarantes.html'"></div>
+
+      <action-tab icon="" title="Continuar" action="show" type="button" numtab="2"></action-tab>
+
+    </ng-pane>
+    
+    <ng-pane title="Tab2">
+       <h5>Panel2</h5>
+       <em>Contenido 2</em>
+       
+       <div ng-include="'template/form/Defuncion/datos_persona_fallecida.html'"></div>
+
+       
+       <action-tab icon="" title="Retroceder" action="show" type="button" numtab="1"></action-tab>
+       <action-tab icon="" title="Continuar" action="show" type="button" numtab="3"></action-tab>
+        
+
+    </ng-pane>
+    
+    <ng-pane title="Tab3">
+      <h5>Panel3</h5>
+      <em>Contenido 3</em>
+      
+      <div ng-include="'template/form/Defuncion/datos_progenitores.html'"></div>
+
+      <action-tab icon="" title="Retroceder" action="show" type="button" numtab="2"></action-tab>
+        <action-tab icon="" title="Inicio" action="show" type="button" numtab="1"></action-tab>
+
+    </ng-pane>
+
+</ng-tabs>
+
+</br>
+<p>Inicializar el componente ngTabs de la siguiente manera:</p>
+
+<article class="mod alpha">
+	<div class="hd"><h3>en el View</h3></div>
+	<div class="bd">
+		<pre class="brush: js;">
+
+			&ltng-tabs&gt
+
+			    &ltng-pane title="Tab1"&gt
+			      &lth5&gtPanel1&lt/h5&gt
+			      &ltp&gtContenido 1&lt/p&gt
+			      
+			        <span class="str">&ltdiv ng-include="'template/form/Defuncion/datos_declarantes.html'"&gt&lt/div&gt</span>
+
+				&ltaction-tab icon="" title="Continuar" action="show" type="button" numtab="2"&gt&lt/action-tab&gt			   
+
+			    &lt/ng-pane&gt
+			    
+			    &ltng-pane title="Tab2"&gt
+			       &lth5&gtPanel2&lt/h5&gt
+			       &ltem&gtContenido 2&lt/em&gt
+			       
+			       <span class="str">&ltdiv ng-include="'template/form/Defuncion/datos_persona_fallecida.html'"&gt&lt/div&gt</span>
+
+			    	&ltaction-tab icon="" title="Retroceder" action="show" type="button" numtab="1"&gt&lt/action-tab&gt
+       				&ltaction-tab icon="" title="Continuar" action="show" type="button" numtab="3"&gt&lt/action-tab&gt 
+
+			    &lt/ng-pane&gt
+			    
+			    &ltng-pane title="Tab3"&gt
+			    	&lth5&gtPanel3&lt/h5&gt
+			    	&ltem&gtContenido 3&lt/em&gt
+			      
+			     	<span class="str">&ltdiv ng-include="'template/form/Defuncion/datos_progenitores.html'"&gt&lt/div&gt</span>
+
+			     	&ltaction-tab icon="" title="Retroceder" action="show" type="button" numtab="2"&gt&lt/action-tab&gt
+			       	&ltaction-tab icon="" title="Inicio" action="show" type="button" numtab="1"&gt&lt/action-tab&gt
+
+			    &lt/ng-pane&gt
+
+			&lt/ng-tabs&gt
+
+		</pre>
+
+		
+	</div>
+</article>
+
+

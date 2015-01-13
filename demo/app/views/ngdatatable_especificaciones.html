@@ -1,0 +1,126 @@
+<h1>ngDataTable</h1>
+
+<div class="bs-callout bs-callout-info">
+  <h3>Especificaciones</h3></br>
+</div>
+<table class="table table-bordered table-striped">
+    <colgroup>
+      <col class="span1">
+      <col class="span7">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Propiedad</th>
+        <th>Tipo</th>
+        <th>Descripción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>ngDatatable</b></td>
+        <td>Objeto</td>
+        <td>Objeto principal para la configuracion de la tabla.</td>
+      </tr>
+      <tr>
+        <td class="state-pending">theads</td>
+        <td>Array de objetos</td>
+        <td>Objeto secundario para definir la cabecera de la tabla y algunos aspectos de las columnas.</td>
+      </tr>
+      <tr>
+        <td>theads.title</td>
+        <td>Caracter</td>
+        <td>Define el nombre de la cabecera de la columna.</td>
+      </tr>
+      <tr>
+        <td>theads.center</td>
+        <td>Caracter</td>
+        <td>Define el centrado del contenido de toda la columna.</td>
+      </tr>
+      <tr>
+        <td>theads.hide</td>
+        <td>Booleano</td>
+        <td>Permite esconder la columna.</td>
+      </tr>
+      <tr>
+        <td class="state-pending">icons</td>
+        <td>Array de objetos</td>
+        <td>Objeto secundario que contiene un array de objetos para crear los iconos para una accion determinada en cada fila.</td>
+      </tr>
+       <tr>
+        <td>icons.name</td>
+        <td>Caracter</td>
+        <td>Permite esconder la columna.</td>
+      </tr>
+       <tr>
+        <td>icons.class</td>
+        <td>Caracter</td>
+        <td>Define la clase del icono a mostrar.</td>
+      </tr>
+      <tr>
+        <td>icons.action</td>
+        <td>Funcion</td>
+        <td>Función que retrorna a traves de la variable "row" un objeto con los datos de cada fila.</td>
+      </tr>
+      <tr>
+        <td>icons.action</td>
+        <td>Funcion</td>
+        <td>Función que retrorna callback a traves de la variable "row" un objeto con los datos de cada fila.</td>
+      </tr>
+      <tr>
+        <td class="state-pending">icons.actionTab</td>
+        <td>Objeto</td>
+        <td>Permite configurar la interaccon de la tabla con tabs</td>
+      </tr>
+      <tr>
+        <td>actionTab.showTab</td>
+        <td>Entero</td>
+        <td>Indica el numero de la tab a mostrar y a interactuar</td>
+      </tr>
+       <tr>
+        <td>actionTab.call</td>
+        <td>Funcion</td>
+        <td>Funcion que retorna como callback la fila a utilizar a traves de un objeto en la variable "row"</td>
+      </tr>
+      <tr> 
+        <td class="state-pending">data</td>
+        <td>Array de objetos</td>
+        <td>Renderiza los datos directamente a traves de un array de objetos.</td>
+      </tr>
+      <tr> 
+        <td class="state-pending">dataAjax</td>
+        <td>Objeto</td>
+        <td>Permite renderizar la data desde una direccion http remota.</td>
+      </tr>
+      <tr> 
+        <td>dataAjax.url</td>
+        <td>Caracter</td>
+        <td>Permite definir parte de la url a consultar previamente definida en la configuración del proyecto.</td>
+      </tr>
+      <tr> 
+        <td>dataAjax.parameters</td>
+        <td>Objeto</td>
+        <td>Permite definir el objeto de parametros definidos para la consulta, las propiedades que debe de tener como minimo, por defecto y obligatoriamente dicho objeto son:<br /> <b>numeroPagina</b> y <b>numeroRegistros</b></td>
+      </tr>
+      <tr> 
+        <td>dataAjax.restart</td>
+        <td>Boolenao</td>
+        <td>Activa el cambio dinamico de consultas por url en diferentes eventos.</td>
+      </tr>
+      <tr> 
+        <td class="state-pending">define</td>
+        <td>Objeto</td>
+        <td>Define los objetos a renderizar en la respuesta del backend</td>
+      </tr>
+      <tr> 
+        <td>define.totalRows</td>
+        <td>Caracter</td>
+        <td>Define el objeto donde en Backend se devuelve el total de registros, es escencial para el funcionameinto de la paginacion y deve llevar siempre el prefijo "data"</td>
+      </tr>
+      <tr> 
+        <td>define.dataObject</td>
+        <td>Caracter</td>
+        <td>Define la lista donde en Backend se devuelve el array de objetos a renderizar, deve llevar siempre el prefijo "data"</td>
+      </tr>
+      
+    </tbody>
+</table>

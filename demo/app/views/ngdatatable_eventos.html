@@ -1,0 +1,141 @@
+<h1>ngDataTable</h1>
+
+<div class="bs-callout bs-callout-info">
+  <h3>Carga dinamica con eventos</h3>
+</div>
+
+<button class="btn btn-blue" data-ng-click="clickBancos()">
+  Ver Tabla de bancos
+</button>
+<br>
+<br>
+<button class="btn btn-blue" data-ng-click="clickUsuarios()">
+  Ver Tabla de Usuarios
+</button>
+
+<button class="btn btn-blue" data-ng-click="ocultarCamposUsuarios()">
+  Esconder Cabecera Usuarios
+</button>
+
+<button class="btn btn-blue" data-ng-click="mostrarCamposUsuarios()">
+  Mostrar Cabecera Usuarios
+</button>
+
+<br/>
+<br/>
+
+<div data-ng-show="mostrarBusqueda">
+
+  <ng-datatable stoptions="optdynamic">
+  </ng-datatable>
+
+</div>
+
+</br>
+<p>Inicializar el componente ngTabs de la siguiente manera:</p>
+
+<article class="mod alpha">
+  <div class="hd"><h3>en el View</h3></div>
+  <div class="bd">
+    <pre class="brush: js;">
+
+      &ltbutton class="btn btn-blue" data-ng-click="clickBancos()"&gt
+        Ver Tabla de bancos
+      &lt/button&gt
+
+      &ltbutton class="btn btn-blue" data-ng-click="clickUsuarios()"&gt
+        Ver Tabla de Usuarios
+      &lt/button&gt
+
+      &ltbr/&gt
+      &ltbr/&gt
+
+      &ltdiv data-ng-show="mostrarBusqueda"&gt
+
+        &ltng-datatable stoptions="optdynamic"&gt
+        &lt/ng-datatable&gt
+
+      &lt/div&gt
+
+    </pre>
+
+    
+  </div>
+</article>
+
+<article class="mod alpha">
+  <div class="hd"><h3>en el Controller</h3></div>
+  <div class="bd">
+    <pre class="brush: js;">
+
+     $scope.parametros={
+          appId:"12345",
+          numeroPagina:1,
+          numeroRegistros:20,
+      } 
+
+      $scope.optdynamic={
+           ngDatatable:{
+             theads:[{title:'Id', center:true},
+               {title:'Nombre'},
+               {title:'Apellidos', hide:true},
+               {title:'Telefono', center:true},
+               {title:'Correo'},
+               {title:'Dirección', hide:true}],
+             icons:[{name:'Ver Detalle',
+                class:'icon-scytl-search',
+                action:function(row){
+                 alert('Ver '+JSON.stringify(row));
+               }
+              },
+               {name:'Eliminar',
+                class:'icon-trash',
+                action:function(row){
+                  alert('Eliminar '+JSON.stringify(row));
+                }
+            }],
+            define:{totalRows:'data.numeroRegistros',
+            dataObject:'data.lista'},
+            dataAjax:{}          
+          }
+      }
+
+      $scope.clickBancos=function(){
+
+        $scope.mostrarBusqueda=true;
+        $scope.optdynamic.ngDatatable.dataAjax.url='obtain/remote/bancos';
+        $scope.optdynamic.ngDatatable.dataAjax.parameters=$scope.parametros;
+      
+      }
+
+      $scope.clickUsuarios=function(){
+
+        $scope.mostrarBusqueda=true;
+        $scope.optdynamic.ngDatatable.dataAjax.url='obtain/remote/users';
+        $scope.optdynamic.ngDatatable.dataAjax.restart=true;
+        $scope.optdynamic.ngDatatable.dataAjax.parameters=$scope.parametros;
+        $scope.optdynamic.ngDatatable.theads=[{title:'Id', obj:'id'},
+                                               {title:'Nombre',obj:'nombre'},
+                                               {title:'Apellidos', obj:'apellidos'},
+                                               {title:'Dirección', obj:'direccion'}];
+      
+      }
+
+      $scope.ocultarCamposUsuarios=function(){
+
+        $scope.optdynamic.ngDatatable.theads[0].hide=true;
+        $scope.optdynamic.ngDatatable.theads[1].hide=true;
+
+      }
+
+      $scope.mostrarCamposUsuarios=function(){
+
+        $scope.optdynamic.ngDatatable.theads[0].hide=false;
+        $scope.optdynamic.ngDatatable.theads[1].hide=false;
+
+      }
+        
+    </pre>
+  </div>
+</article>
+

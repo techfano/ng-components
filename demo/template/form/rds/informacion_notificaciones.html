@@ -1,0 +1,89 @@
+<form name="frmInfoNotificaciones" novalidate>	
+    <fieldset class="form-horizontal box-border">
+    	<legend class="box-border">Información Para Notificaciones</legend>
+		<div class="control-group big">
+            <label class="control-label">Nombre completo: 
+            	<span class="state-required">(<b>*</b>)</span>
+            </label>
+            <div class="controls ng-class: {error:frmInfoNotificaciones.nombreNotificacion.$error.minlength||frmInfoNotificaciones.nombreNotificacion.$error.maxlength}">
+            	<input type="text" data-ng-model="modeloNotificacion.nombre" name="nombreNotificacion" data-ng-required="true" data-ng-minlength="1" data-ng-maxlength="150" class="span4" data-ng-disabled="deshabilitadoConfirmacion">
+                <mensaje tipo="MSG009" visible="frmInfoNotificaciones.nombreNotificacion.$error.minlength||frmInfoNotificaciones.nombreNotificacion.$error.maxlength"></mensaje>
+            </div>
+        </div>
+        <div class="control-group big ng-class: {error:frmInfoNotificaciones.correoNotificacion.$error.pattern||frmInfoNotificaciones.correoNotificacion.$error.maxlength}" data-ng-show="mostrarCorreoConfirmacion()">
+            <label class="control-label">Correo Electrónico:
+            </label>
+            <div class="controls">
+                <input type="text" data-ng-model="modeloNotificacion.correo" name="correoNotificacion" data-ng-maxlength="80" data-ng-pattern="/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/" class="span4" data-ng-disabled="deshabilitadoConfirmacion">
+                <mensaje tipo="MSG009" visible="frmInfoNotificaciones.correoNotificacion.$error.pattern||frmInfoNotificaciones.correoNotificacion.$error.maxlength"></mensaje>
+            </div>           
+        </div>
+        <div class="control-group big ng-class: {error:frmInfoNotificaciones.faxNotificacion.$error.minlength||frmInfoNotificaciones.faxNotificacion.$error.maxlength||frmInfoNotificaciones.faxNotificacion.$error.pattern}" data-ng-show="mostrarFaxConfirmacion()">
+            <label class="control-label">Fax: 
+            </label>
+            <div class="controls">
+            	<input type="text" data-ng-model="modeloNotificacion.fax" name="faxNotificacion" data-ng-minlength="1" data-ng-maxlength="150" data-ng-pattern="/^[0-9]+$/" data-ng-disabled="deshabilitadoConfirmacion">
+                <mensaje tipo="MSG009" visible="frmInfoNotificaciones.faxNotificacion.$error.minlength||frmInfoNotificaciones.faxNotificacion.$error.maxlength||frmInfoNotificaciones.faxNotificacion.$error.pattern"></mensaje>
+            </div>
+        </div>
+        <div class="control-group big ng-class: {error:frmInfoNotificaciones.telefono1Notificacion.$error.minlength||frmInfoNotificaciones.telefono1Notificacion.$error.maxlength||frmInfoNotificaciones.telefono1Notificacion.$error.pattern}" data-ng-show="mostrarTelefono1Confirmacion()">
+            <label class="control-label">Telefono 1: 
+            </label>
+            <div class="controls">
+            	<input type="text" data-ng-model="modeloNotificacion.telefono1" name="telefono1Notificacion" data-ng-minlength="1" data-ng-maxlength="150" data-ng-pattern="/^[0-9]+$/" data-ng-disabled="deshabilitadoConfirmacion">
+                <mensaje tipo="MSG009" visible="frmInfoNotificaciones.telefono1Notificacion.$error.minlength||frmInfoNotificaciones.telefono1Notificacion.$error.maxlength||frmInfoNotificaciones.telefono1Notificacion.$error.pattern"></mensaje>
+            </div>
+        </div>
+        <div class="control-group big ng-class: {error:frmInfoNotificaciones.telefono2Notificacion.$error.minlength||frmInfoNotificaciones.telefono2Notificacion.$error.maxlength||frmInfoNotificaciones.telefono2Notificacion.$error.pattern}" data-ng-show="mostrarTelefono2Confirmacion()">
+            <label class="control-label">Telefono 2: 
+            </label>
+            <div class="controls">
+            	<input type="text" data-ng-model="modeloNotificacion.telefono2" name="telefono2Notificacion" data-ng-minlength="1" data-ng-maxlength="150" data-ng-pattern="/^[0-9]+$/" data-ng-disabled="deshabilitadoConfirmacion">
+                <mensaje tipo="MSG009" visible="frmInfoNotificaciones.telefono2Notificacion.$error.minlength||frmInfoNotificaciones.telefono2Notificacion.$error.maxlength||frmInfoNotificaciones.telefono2Notificacion.$error.pattern"></mensaje>
+            </div>
+        </div>
+        <div class="control-group big">
+        	<div data-ng-show="mostrarUbigeoDirectiva">
+        		<ubigeo verpoblado="false" verdtoelectoral="false" verdtoadmin="true" vercanton="true" verprovincia="true" lprovincia="Provincia" lcanton="Canton" ldtoadmin="Distrito Administrativo" resetar="_realizarReseteoUbigeo" tamaniodiv="big" obtenerprovincia="cargarUbigeo"></ubigeo>	
+        	</div>
+        	<div data-ng-show="mostrarUbigeoConfirmacion">
+        		<div class="control-group big">
+			        <label class="control-label">
+			            Provincia: {{modeloNotificacion.provincia}}
+			            <span class="state-required">(<b>*</b>)</span>
+			        </label>
+			        <div class="controls">
+			            <input type="text" data-ng-model="modeloNotificacion.provincia" class="span2" data-ng-disabled="deshabilitadoConfirmacion">
+			        </div>
+			    </div>
+			    <div class="control-group big">
+			        <label class="control-label">
+			            Canton:
+			            <span class="state-required">(<b>*</b>)</span>
+			        </label>
+			        <div class="controls">
+			            <input type="text" data-ng-model="modeloNotificacion.canton" class="span2" data-ng-disabled="deshabilitadoConfirmacion">
+			        </div>
+			    </div>
+			    <div class="control-group big" >
+			        <label class="control-label">
+			            Distrito Administrativo:
+			            <span class="state-required">(<b>*</b>)</span>
+			        </label>
+			        <div class="controls">
+			            <input type="text" data-ng-model="modeloNotificacion.distritoAdministrativo" class="span2" data-ng-disabled="deshabilitadoConfirmacion">
+			        </div>
+			    </div>
+        	</div>   
+        </div>
+        <div class="control-group big ng-class: {error:frmInfoNotificaciones.referenciaNotificacion.$error.minlength||frmInfoNotificaciones.referenciaNotificacion.$error.maxlength}">
+            <label class="control-label">Referencia: 
+            	<span class="state-required">(<b>*</b>)</span>
+            </label>
+            <div class="controls">
+            	<input type="text" data-ng-model="modeloNotificacion.referencia" name="referenciaNotificacion" data-ng-required="true" data-ng-minlength="1" data-ng-maxlength="150" class="span4" data-ng-disabled="deshabilitadoConfirmacion">
+                <mensaje tipo="MSG009" visible="frmInfoNotificaciones.referenciaNotificacion.$error.minlength||frmInfoNotificaciones.referenciaNotificacion.$error.maxlength"></mensaje>
+            </div>
+        </div>
+    </fieldset>
+</form>

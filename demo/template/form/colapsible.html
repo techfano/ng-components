@@ -1,0 +1,47 @@
+<div class="accordion" id="acordeon">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#acordeon" href="#collapseOne{{$index}}">
+        Sucursales Lima
+      </a>
+    </div>
+    <div id="collapseOne{{$index}}" class="accordion-body collapse">
+      <div class="accordion-inner">
+
+            <ng-litetable heads="configuration" data="templates.lista.lima">
+            </ng-litetable>
+
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#acordeon" href="#collapseTwo{{$index}}">
+        Sucursales Tacna
+      </a>
+    </div>
+    <div id="collapseTwo{{$index}}" class="accordion-body collapse">
+      <div class="accordion-inner">
+        
+        <ng-litetable heads="configuration" data="templates.lista.tacna">
+        </ng-litetable>
+
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#acordeon" href="#collapsetrhee{{$index}}">
+        Sucursales Chiclayo
+      </a>
+    </div>
+    <div id="collapsetrhee{{$index}}" class="accordion-body collapse">
+      <div class="accordion-inner">
+            
+        <ng-litetable heads="configuration" data="templates.lista.chiclayo">
+        </ng-litetable>
+
+      </div>
+    </div>
+  </div>
+</div>

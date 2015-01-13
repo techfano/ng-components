@@ -1,0 +1,424 @@
+<form name="frmTitulares" novalidate>
+	<div class="bd">
+		<fieldset class="form-horizontal">
+			<div class="control-group">
+				<div class="mod">
+	                <div class="hd">
+	                    <h3>Información de Titulares</h3>
+	                </div>
+	                <div class="bd">
+	                	<div data-ng-show="mostrarTitulares" class="alert alert-info">
+                            <i></i>
+                            <p class="cell">Falta Agregar Titulares.</p>
+                            <button data-dismiss="alert" class="close" type="button">Cerrar</button>
+                        </div>
+                        <div data-ng-show="!mostrarTitulares"> 
+                        	<div class="bd">
+                                <div class="row-fluid table-fixed">   
+				                    <table class="table-zebra">
+				                        <thead>
+				                            <tr>
+				                                <th class="ctxt">N°</th>
+				                                <th>N° de Cita</th>
+				                                <th>Tipo Documento Titular</th>
+				                                <th>N° Documento Titular</th>
+				                                <th>Nombre Titular</th>
+				                                <th>Fecha Suceso</th>
+				                                <th>Tipo Cita</th>
+				                                <th>Tipo Documento Conyugue (*)</th>
+				                                <th>N° Documento Conyugue (*)</th>
+				                                <th>Nombre Cónyugue</th>
+				                                <th class="ctxt">Quitar</th>
+				                            </tr>
+				                        </thead>
+				                        <tbody>
+				                            <tr data-ng-repeat="lc in listaCitasEnviar">
+				                                <td class="ctxt">{{$index+1}}</td>
+				                                <td>{{lc.citaInscripcion}}</td>
+				                                <td>{{lc.tipoDocumentoT}}</td>
+				                                <td>{{lc.documentoIdentidadT}}</td>
+				                                <td>{{lc.nombreTitular}}</td>
+				                                <td>{{lc.verFechaSuceso}}</td>
+				                                <td>{{lc.descripcionTipoCita}}</td>
+				                                <td>{{lc.tipoDocumentoC}}</td>
+				                                <td>{{lc.documentoIdentidadC}}</td>
+				                                <td>{{lc.nombreConyuge}}</td>
+				                                <td class="ctxt"><i class="icon-scytl-del" data-ng-click="clicQuitar(lse.idSentencia)"></i></td>
+				                            </tr>
+				                        </tbody>
+				                    </table>
+			                	</div>
+			            	</div>
+	                	</div>
+
+	                </div>
+	                <p data-ng-show="!mostrarTitulares" style="margin-top:20px;">(*) Las columnas especificadas sólo contendrán datos para el tipo de cita (Matrimonio)</p>
+	            </div>
+				<label class="control-label">
+					¿Existe el asiento inscrito?
+					<span class="state-required">
+				</label>
+				<div class="controls">
+					<label class="radio inline">
+						<input type="radio" data-ng-change="cambiarAsiento()" data-ng-model="titular.asiento" value="S">
+						Si
+					</label>
+					<label class="radio inline">
+						<input type="radio" data-ng-change="cambiarAsiento()" data-ng-model="titular.asiento" value="N">
+						No
+					</label>
+				</div>
+				<br/>
+				<div class="mod" data-ng-show="mostrarSiAsiento">
+					<div class="bd">
+						<div class="control-group">
+                            <label class="control-label">
+                            	Buscar Por:
+                            </label>
+                            <div class="controls">
+                                <select data-ng-disabled="disabledTipoDocumento" data-ng-options="doc.descripcion for doc in listaTipoDocumento" data-ng-change="cambiarDocumento()" data-ng-model="modeloDocumento"></select>
+                                <div data-ng-click="clicToggleAvanzado()" class="btn btn-link" data-ng-class="claseAvanzada">
+	                                <span class="caret caret-blue"></span> 
+	                                {{labelBusquedaAvanzada}}
+	                            </div>
+                            </div>
+                        </div>
+                        <div data-ng-show="mostrarBusquedaAvanzada" class="mod mod-bordered mod-filled mbn in collapse">
+	                            <div class="bd">
+	                                <fieldset class="form-horizontal">
+	                                    <div class="control-group ng-class: {error:frmTitulares.nombretitular.$error.minlength||frmTitulares.nombretitular.$error.maxlength}">
+	                                        <label class="control-label">Nombre Titular: </label>
+	                                        <div class="controls">
+	                                            <input type="text" data-ng-model="modeloNombreTitular" name="nombreTitular" data-ng-required="true" data-ng-minlength="1" data-ng-maxlength="100" class="span6">
+	                                            <mensaje tipo="MSG009" visible="frmTitulares.nombreTitular.$error.minlength||frmTitulares.nombreTitular.$error.maxlength"></mensaje>
+	                                        </div>
+	                                    </div>
+	                                    <div class="control-group ng-class: {error:frmTitulares.primerApellido.$error.minlength||frmTitulares.primerApellido.$error.maxlength||frmTitulares.primerApellido.$error.pattern}">
+	                                        <label class="control-label">Primer Apellido: </label>
+	                                        <div class="controls">
+	                                            <input type="text" data-ng-model="modeloPrimerApellido" name="primerApellido" data-ng-required="true" data-ng-minlength="1" data-ng-maxlength="100" data-ng-pattern="/^[a-zA-Z\d\-_\s]+$/"class="span6">
+	                                            <mensaje tipo="MSG009" visible="frmTitulares.primerApellido.$error.minlength||frmTitulares.primerApellido.$error.maxlength||frmTitulares.primerApellido.$error.pattern"></mensaje>
+	                                        </div>
+	                                    </div>
+	                                    <div class="control-group ng-class: {error:frmTitulares.segundoApellido.$error.minlength||frmTitulares.segundoApellido.$error.maxlength||frmTitulares.segundoApellido.$error.pattern}">
+	                                        <label class="control-label">Segundo Apellido: </label>
+	                                        <div class="controls">
+	                                            <input type="text" data-ng-model="modeloSegundoApellido" name="segundoApellido" data-ng-required="true" data-ng-minlength="1" data-ng-maxlength="100" data-ng-pattern="/^[a-zA-Z\d\-_\s]+$/"class="span6">
+	                                            <mensaje tipo="MSG009" visible="frmTitulares.segundoApellido.$error.minlength||frmTitulares.segundoApellido.$error.maxlength||frmTitulares.segundoApellido.$error.pattern"></mensaje>
+	                                        </div>
+	                                    </div>
+	                                    <div class="control-group">
+	                                        <label class="control-label">Tipo Cita: </label>
+	                                        <div class="controls">
+	                                            <select data-ng-model="modeloTipoCita" data-ng-change="cambiarTipoCita()" data-ng-options="ltc.descripcion for ltc in listaTipoCita" data-ng-disabled="disabledTipoCita"class="span3"></select>
+	                                        </div>
+	                                    </div>
+	                                    <datepickerdesdehasta lfecha="Fecha Suceso:" resetar="_realizarReseteoInputsDesdeHasta" mostrardesdehasta="true"></datepickerdesdehasta>
+	                                    <button class="btn btn-blue" data-ng-click="clicBuscarAvanzado()" type="button">
+	                                        Buscar
+	                                    </button>
+	                                </fieldset>
+	                            </div>
+	                        </div>
+
+	                        <div class="mod" data-ng-show="mostrarBusquedaBasica">
+	                            <div class="form-special">
+	                            	<div class="control-group" data-ng-show="mostrarTipoCitaBasica">
+			                            <label class="control-label">
+			                            	Tipo de Cita:
+			                            </label>
+			                            <div class="controls">
+			                                <select data-ng-model="modeloTipoCitaBasica" data-ng-change="cambiarTipoCitaBasica()" data-ng-options="ltc.descripcion for ltc in listaTipoCitaBasica" data-ng-disabled="disabledTipoCitaNoExtranjero" class="span3"></select>
+			                            </div>
+			                        </div>
+			                        <div style="clear:both;">
+	                                <div class="control-group ng-class: {error:frmTitulares.provincia.$error.minlength||frmTitulares.provincia.$error.maxlength||frmTitulares.provincia.$error.pattern}" data-ng-show="mostrarProvincia">      
+	                                    <label class="control-label">Provincia: 
+	                                        <span class="state-required">(<b>*</b>)</span>
+	                                    </label>
+	                                    <input class="input-small" type="text" data-ng-model="modeloProvincia" name="provincia" data-ng-required="true" data-ng-minlength="1" data-ng-maxlength="2" data-ng-pattern="/^[0-9]+$/">
+	                                    <mensaje tipo="MSG009" visible="frmTitulares.provincia.$error.minlength||frmTitulares.provincia.$error.maxlength||frmTitulares.provincia.$error.pattern"></mensaje>
+	                                </div>   
+	                                <div class="control-group ng-class: {error:frmTitulares.tomo.$error.minlength||frmTitulares.tomo.$error.maxlength||frmTitulares.tomo.$error.pattern}" data-ng-show="mostrarTomo">
+	                                    <label class="control-label">Tomo:
+	                                        <span class="state-required">(<b>*</b>)</span>
+	                                    </label>
+	                                    <input class="input-small" type="text" data-ng-model="modeloTomo" name="tomo" data-ng-required="true" data-ng-minlength="1" data-ng-maxlength="4" data-ng-pattern="/^[0-9]+$/">
+	                                    <mensaje tipo="MSG009" visible="frmTitulares.tomo.$error.minlength||frmTitulares.tomo.$error.maxlength||frmTitulares.tomo.$error.pattern"></mensaje>
+	                                </div>
+	                                <div class="control-group ng-class: {error:frmTitulares.folio.$error.minlength||frmTitulares.folio.$error.maxlength||frmTitulares.folio.$error.pattern}" data-ng-show="mostrarFolio">
+	                                    <label class="control-label">Folio:
+	                                        <span class="state-required">(<b>*</b>)</span>
+	                                    </label>
+	                                    <input class="input-small" type="text" data-ng-model="modeloFolio" name="folio" data-ng-required="true" data-ng-minlength="1" data-ng-maxlength="3" data-ng-pattern="/^[0-9]+$/">
+	                                    <mensaje tipo="MSG009" visible="frmTitulares.folio.$error.minlength||frmTitulares.folio.$error.maxlength||frmTitulares.folio.$error.pattern"></mensaje>
+	                                </div>
+	                                <div class="control-group ng-class: {error:frmTitulares.asiento.$error.minlength||frmTitulares.asiento.$error.maxlength||frmTitulares.asiento.$error.pattern}" data-ng-show="mostrarAsiento">
+	                                    <label class="control-label">Asiento:
+	                                        <span class="state-required">(<b>*</b>)</span>
+	                                    </label>
+	                                    <input class="input-small" type="text" data-ng-model="modeloAsiento" name="asiento" data-ng-required="true" data-ng-minlength="1" data-ng-maxlength="4" data-ng-pattern="/^[0-9]+$/">
+	                                    <mensaje tipo="MSG009" visible="frmTitulares.asiento.$error.minlength||frmTitulares.asiento.$error.maxlength||frmTitulares.asiento.$error.pattern"></mensaje>
+	                                </div>
+	                                <div class="control-group ng-class: {error:frmTitulares.numeroIdentificacionAsiento.$error.minlength||frmTitulares.numeroIdentificacionAsiento.$error.maxlength||frmTitulares.numeroIdentificacionAsiento.$error.pattern}" data-ng-show="mostrarNumeroIdentificacion">
+	                                    <label class="control-label" style="width:300px;">{{labelIdentificacion}}
+	                                        <span class="state-required">(<b>*</b>)</span>
+	                                    </label>
+	                                    <input type="text" data-ng-model="modeloNumeroIdentificacionAsiento" name="numeroIdentificacionAsiento" data-ng-required="true" data-ng-minlength="1" data-ng-maxlength="15" data-ng-pattern="/^[0-9]+$/">
+	                                    <mensaje tipo="MSG009" visible="frmTitulares.numeroIdentificacionAsiento.$error.minlength||frmTitulares.numeroIdentificacionAsiento.$error.maxlength||frmTitulares.numeroIdentificacionAsiento.$error.pattern"></mensaje>
+	                                </div>
+	                                </div>
+	                            </div>
+	                        <br />
+	                        <div class="control-group" style="width:100px;">
+	                            <button class="btn btn-blue" data-ng-show="mostrarBuscarBoton" data-ng-click="clicBuscar(frmTitulares)" >
+	                                Buscar
+	                            </button>
+	                        </div>
+	                    </div>
+                    </div>	
+				</div>
+				<div class="mod" data-ng-show="mostrarNoAsiento">
+					<div class="bd">
+						<div class="control-group" data-ng-show="mostrarTipoSuceso">
+                            <label class="control-label">
+                            	Tipo de Suceso:
+                            </label>
+                            <div class="controls">
+                                <select data-ng-model="modeloTipoCitaNoExtranjero" data-ng-change="cambiarTipoCitaNoExtranjero()" data-ng-options="ltc.descripcion for ltc in listaTipoCitaNoExtranjero" data-ng-disabled="disabledTipoCitaNoExtranjero" class="span3"></select>
+                            </div>
+                        </div>
+                        <div class="bd mbm" style="overflow: hidden;">
+                            <fieldset class="form-horizontal box-border" data-ng-class="claseFieldsetMatrimonio" data-ng-show="mostrarInscripcionNoMatrimonio">
+                            	<legend class="box-border">{{labelTitularNoAsiento}}</legend>
+                                <div class="control-group big ng-class: {error:frmTitulares.nombretitular.$error.minlength||frmTitulares.nombretitular.$error.maxlength||frmTitulares.nombretitular.$error.pattern}">
+                                    <label class="control-label">Tipo Documento: 
+                                    	<span class="state-required">(<b>*</b>)</span>
+                                    </label>
+                                    <div class="controls">
+                                    	<select data-ng-model="modeloDocumentoNoAsiento" data-ng-change="cambiarDocumentoNoAsiento()" data-ng-options="doc.descripcion for doc in listaTipoDocumentoNoAsiento" data-ng-disabled="disabledTipoDocumentoNoAsiento"></select>
+                                    </div>
+                                </div>
+                                <div class="control-group big ng-class: {error:frmTitulares.numeroIdentificacionNoAsiento.$error.minlength||frmTitulares.numeroIdentificacionNoAsiento.$error.maxlength||frmTitulares.numeroIdentificacionNoAsiento.$error.pattern}" >
+                                    <label class="control-label">Número de Identificación:
+                                        <span class="state-required">(<b>*</b>)</span>
+                                    </label>
+                                    <div class="controls">
+	                                    <input type="text" data-ng-model="modeloNumeroIdentificacionNoAsiento" name="numeroIdentificacionNoAsiento" data-ng-required="true" data-ng-minlength="1" data-ng-maxlength="15" data-ng-pattern="/^[0-9]+$/">
+	                                    <mensaje tipo="MSG009" visible="frmTitulares.numeroIdentificacionNoAsiento.$error.minlength||frmTitulares.numeroIdentificacionNoAsiento.$error.maxlength||frmTitulares.numeroIdentificacionNoAsiento.$error.pattern"></mensaje>
+	                                </div>           
+                                </div>
+                                <div class="control-group big ng-class: {error:frmTitulares.nombreTitularNoAsiento.$error.minlength||frmTitulares.nombreTitularNoAsiento.$error.maxlength||frmTitulares.nombreTitularNoAsiento.$error.pattern}">
+                                    <label class="control-label">Nombre Completo Titular:
+                                        <span class="state-required">(<b>*</b>)</span>
+                                    </label>
+                                    <div class="controls">
+                                    	<input type="text" data-ng-model="modeloNombreTitularNoAsiento" name="nombreTitularNoAsiento" data-ng-required="true" data-ng-minlength="1" data-ng-maxlength="15" class="span3" data-ng-pattern="/^[a-zA-Z\d\-_\s]+$/">
+                                    	<mensaje tipo="MSG009" visible="frmTitulares.nombreTitularNoAsiento.$error.minlength||frmTitulares.nombreTitularNoAsiento.$error.maxlength||frmTitulares.nombreTitularNoAsiento.$error.pattern"></mensaje>     
+                                    </div>              
+                                </div>
+                                <div class="control-group big">
+                                    <label class="control-label">Nacionalidad: 
+                                    	<span class="state-required">(<b>*</b>)</span>
+                                    </label>
+                                    <div class="controls">
+                                    	<select data-ng-model="modeloNacionalidad" data-ng-change="" data-ng-options="nac.descripcion for nac in listaNacionalidad" data-ng-disabled="disabledNacionalidad"></select>
+                               		 </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="form-horizontal box-border span5" data-ng-show="mostrarInscripcionMatrimonio">
+                            	<legend class="box-border">Información de la Contrayente</legend>
+                                <div class="control-group ng-class: {error:frmTitulares.nombretitular.$error.minlength||frmTitulares.nombretitular.$error.maxlength||frmTitulares.nombretitular.$error.pattern}">
+                                    <label class="control-label">Tipo Documento: </label>
+                                    <div class="controls">
+                                    	<select data-ng-model="modeloDocumentoNoAsientoContrayente" data-ng-change="cambiarDocumentoNoAsiento()" data-ng-options="doc.descripcion for doc in listaTipoDocumentoNoAsiento" data-ng-disabled="disabledTipoDocumentoNoAsientoContrayente"></select>
+                                	</div>
+                                </div>
+                                <div class="control-group ng-class: {error:frmTitulares.numeroIdentificacionNoAsientoContrayente.$error.minlength||frmTitulares.numeroIdentificacionNoAsientoContrayente.$error.maxlength||frmTitulares.numeroIdentificacionNoAsientoContrayente.$error.pattern}" >
+                                    <label class="control-label">Número de Identificación:
+                                        <span class="state-required">(<b>*</b>)</span>
+                                    </label>
+                                    <div class="controls">
+                                    	<input type="text" data-ng-model="modeloNumeroIdentificacionNoAsientoContrayente" name="numeroIdentificacionNoAsientoContrayente" data-ng-required="true" data-ng-minlength="1" data-ng-maxlength="15" data-ng-pattern="/^[0-9]+$/">
+                                    	<mensaje tipo="MSG009" visible="frmTitulares.numeroIdentificacionNoAsientoContrayente.$error.minlength||frmTitulares.numeroIdentificacionNoAsientoContrayente.$error.maxlength||frmTitulares.numeroIdentificacionNoAsientoContrayente.$error.pattern"></mensaje>   
+                                    </div>                
+                                </div>
+                                <div class="control-group ng-class: {error:frmTitulares.nombreTitularNoAsientoContrayente.$error.minlength||frmTitulares.nombreTitularNoAsientoContrayente.$error.maxlength||frmTitulares.nombreTitularNoAsientoContrayente.$error.pattern}">
+                                    <label class="control-label">Nombre Completo Titular:
+                                        <span class="state-required">(<b>*</b>)</span>
+                                    </label>
+                                    <div class="controls">
+                                    	<input type="text" data-ng-model="modeloNombreTitularNoAsientoContrayente" name="nombreTitularNoAsientoContrayente" data-ng-required="true" data-ng-minlength="1" data-ng-maxlength="15" data-ng-pattern="/^[a-zA-Z\d\-_\s]+$/" class="span3">
+                                    	<mensaje tipo="MSG009" visible="frmTitulares.nombreTitularNoAsientoContrayente.$error.minlength||frmTitulares.nombreTitularNoAsientoContrayente.$error.maxlength||frmTitulares.nombreTitularNoAsientoContrayente.$error.pattern"></mensaje> 
+                                	</div>                  
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Nacionalidad: </label>
+                                    <div class="controls">
+                                    	<select data-ng-model="modeloNacionalidadContrayente" data-ng-change="" data-ng-options="nac.descripcion for nac in listaNacionalidad" data-ng-disabled="disabledNacionalidadContrayente"></select>
+                                	</div>
+                                </div>
+                            </fieldset>
+                            <div class="ft" data-ng-show="mostrarBotonIncluirNoAsiento" style="clear:both;">
+			                    <div class="actions-page">
+			                        <button data-ng-click="clicAgregar(null)" class="btn btn-blue" type="button" data-ng-disabled="validarIncluirTitularNoAsiento(frmTitulares)">
+			                            Incluir
+			                        </button>
+			                    </div>
+			                </div>
+                        </div>
+                    </div>
+				</div>
+				<div class="mod" data-ng-show="mostrarResultados">
+	                <div class="hd">
+	                    <h3>Resultado de Búsqueda</h3>
+	                </div>
+	                <div class="bd">
+	                    <div class="grid-preload" data-ng-show="mostrarPreCarga"></div>
+	                    <div class="alert alert-info" data-ng-show="mostrarRegistros">
+	                      <i></i>
+	                      <p class="cell">{{labelRegistros}}</p>
+	                    </div>
+
+	                    <table class="table-zebra" data-ng-show="!mostrarRegistros">
+	                        <thead>
+	                            <tr>
+	                                <th class="ctxt">N°</th>
+	                                <th>N° de Cita</th>
+	                                <th>Tipo Documento Titular</th>
+	                                <th>N° Documento Titular</th>
+	                                <th>Nombre Titular</th>
+	                                <th>Fecha Suceso</th>
+	                                <th>Tipo Cita</th>
+	                                <th>Tipo Documento Conyugue (*)</th>
+	                                <th>N° Documento Conyugue (*)</th>
+	                                <th>Nombre Cónyugue</th>
+	                                <th class="ctxt">Agregar</th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+	                            <tr data-ng-repeat="lc in listaCitas">
+	                                <td class="ctxt">{{$index+1}}</td>
+	                                <td>{{lc.citaInscripcion}}</td>
+	                                <td>{{lc.tipoDocumentoT}}</td>
+	                                <td>{{lc.documentoIdentidadT}}</td>
+	                                <td>{{lc.nombreTitular}}</td>
+	                                <td>{{lc.verFechaSuceso}}</td>
+	                                <td>{{lc.descripcionTipoCita}}</td>
+	                                <td>{{lc.tipoDocumentoC}}</td>
+	                                <td>{{lc.documentoIdentidadC}}</td>
+	                                <td>{{lc.nombreConyuge}}</td>
+	                                <td class="ctxt"><i class="icon-scytl-add mano" data-ng-click="clicAgregar(lc)"></i></td>
+	                            </tr>
+	                        </tbody>
+	                    </table>
+	                    <div class="pagination" data-ng-show="mostrarPaginado">
+	                        <div class="pull-left legend">
+	                            <b>{{registroInicialPaginado}} </b>- <b>{{registroFinalPaginado}} </b>de <b>{{cantidadRegistrosModel}}</b> entradas
+	                        </div>
+	                        <div class="pull-right">
+	                            <pagination max-size="maxSize" boundary-links="true" num-pages="noOfPages" current-page="currentPage" class="pagination-small" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+			</div>	
+		</fieldset>
+	</div>
+<!-- lightbox -------------------->
+<script type="text/ng-template" id="modalAgregarCita">
+    <div class="modal">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i></i>Cerrar</button>
+            <h3 id="myh3">Agregar Cita</h3>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal" name="frmAC" novalidate>
+            	<div class="control-group">
+                    <label class="control-label" style="width:150px;">
+                        Nro. de Cita:
+                    </label>
+                    <div class="controls" style="margin-left:150px;">
+                        <input class="span2" type="text" data-ng-model="modeloCitaModal.citaInscripcion" name="numeroCitaModal" data-ng-disabled="true">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" style="width:150px;">
+                        Tipo de Cita:
+                    </label>
+                    <div class="controls" style="margin-left:150px;">
+                        <input class="span2" type="text" data-ng-model="modeloCitaModal.descripcionTipoCita" name="tipoCitaModal" data-ng-disabled="true">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" style="width:150px;">
+                        Sección
+                    </label>
+                    <div class="controls" style="margin-left:150px;">
+                        <select data-ng-model="modeloCitaModal.seccion" data-ng-change="cambiarSeccion()" data-ng-options="ls.descripcion for ls in listaSeccion" data-ng-disabled="disabledSeccion" class="span3"></select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" style="width:150px;">
+                        Campo a rectificar:
+                    </label>
+                    <div class="controls" style="margin-left:150px;">
+                        <select data-ng-model="modeloCitaModal.campo" data-ng-change="cambiarCampo()" data-ng-options="lc.descripcion for lc in listaCampo" data-ng-disabled="disabledCampo" class="span3"></select>
+                    </div>
+                </div>
+                <div data-ng-show="mostrarBloqueValores">
+	                <div class="control-group">
+	                    <label class="control-label" style="width:150px;">
+	                        Valor Actual:
+	                    </label>
+	                    <div class="controls" style="margin-left:150px;">
+	                    	<input class="span2" type="text" data-ng-model="modeloCitaModal.valorActual" name="valorActualModal" data-ng-disabled="true" data-ng-show="true">
+	                    </div>
+	                </div>
+	                <div class="control-group">
+	                    <label class="control-label" style="width:150px;">
+	                        Valor Nuevo:
+	                        <span class="state-required">(<b>*</b>)</span>
+	                    </label>
+	                    <div class="controls" style="margin-left:150px;">
+	                    	<input class="span2" type="text" data-ng-model="modeloCitaModal.valorNuevo" name="valorNuevoModal" data-ng-show="mostrarControlInput">
+	                        <select data-ng-model="modeloCitaModal.valorNuevo" data-ng-change="cambiarValorNuevo()" data-ng-options="lvn.descripcion for lvn in listaValorNuevo" data-ng-disabled="disabledValorNuevo" class="span2" data-ng-show="mostrarControlCombo"></select>
+	                        <button class="btn btn-blue" data-ng-click="clicAgregarCitaModal()" data-ng-disabled="disabledAgregarCitaModal" type="button" style="vertical-align:bottom;">
+	                            Agregar
+	                        </button>
+	                    </div>
+	                </div>
+                </div>
+                <div data-ng-show="mostrarRegistrosCampos" style="margin-bottom:15px;">
+                    <table class="table-zebra">
+                        <thead>
+                            <tr>
+                                <th class="ctxt">N°</th>
+                                <th>Sección</th>
+                                <th>Campo a rectificar</th>
+                                <th>Valor Actual</th>
+                                <th>Valor Nuevo</th>
+                                <th class="ctxt">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="lc in listaCambio">
+                                <td class="ctxt">{{$index+1}}</td>
+                                <td>{{lc.seccion}}</td>
+                                <td>{{lc.campo}}</td>
+                                <td>{{lc.valorActual}}</td>
+                                <td>{{lc.valorNuevo}}</td>
+                                <td class="ctxt"><i class="icon-scytl-del" data-ng-click="clicQuitarCambio(lc.id)"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-blue lfloat" data-ng-click="agregarCitaDesdeModal()"> Aceptar </button>
+                    <button class="btn" data-dismiss="modal" aria-hidden="true"> Cancelar </button>
+                  </div>
+            </form>
+        </div>
+    </div>
+</script>
+</form>

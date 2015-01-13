@@ -1,0 +1,140 @@
+<h1>ngAlert</h1>
+<br>
+
+<div class="bs-docs-example">
+
+  <ng-alert stoptions="alert">
+  </ng-alert>
+
+  <button class="btn pull-left" data-ng-click="warning()">
+    Warning
+  </button>
+
+  <button class="btn pull-left" data-ng-click="error()">
+    Error
+  </button>
+
+  <button class="btn pull-left" data-ng-click="alert.type='info'">
+    Info
+  </button>
+
+  <button class="btn pull-left" data-ng-click="alert.type='success'">
+    Success
+  </button>
+
+  <button class="btn pull-left" data-ng-click="new()">
+    Nuevo Mensaje
+  </button>
+  
+  <button class="btn pull-left" data-ng-click="time()">
+    Ocultar Automaticamente en 5 Segs.
+  </button>
+
+  <button class="btn pull-left" data-ng-click="alert.hide.click=false">
+    Ocultar Boton
+  </button>
+
+  <button class="btn pull-left" data-ng-click="alert.hide.click=true">
+    Mostrar Boton
+  </button>
+
+  <button class="btn pull-left" data-ng-click="alert.show=false">
+    Ocultar Alerta
+  </button>
+
+  <button class="btn pull-left" data-ng-click="alert.show=true">
+    Mostrar Alerta
+  </button>
+
+  
+    
+    <br>
+    <br>
+
+</div>
+
+<div class="bs-callout bs-callout-info">
+  <p>Inicializar el componente ngAlert de la siguiente manera:</p>
+</div>
+
+<article class="mod alpha">
+	<div class="hd"><h3>en HTML</h3></div>
+	<div class="bd">
+		<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><<span class="tag">ng-alert stoptions=</span> <span class="atv">"alert"</span>></br></li><li class="L1"><<span class="tag">/ng-alert</span>></li></ol></pre>
+	</div>
+</article>
+
+<article class="mod alpha">
+	<div class="hd"><h3>en Javascript</h3></div>
+	<div class="bd">
+		
+		<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="pln">$scope.alert={</span></br></li><li class="L1"><span class="pln">&nbsp;&nbsp;message:</span><span class="str">'Not Found'</span>,</br></li><li class="L2"><span class="pln">&nbsp;&nbsp;type:</span><span class="str">'info'</span>,</br></li><li class="L2"><span class="pln">&nbsp;&nbsp;show:</span><span class="str">true</span>,</br></li><li class="L3"><span class="pln">&nbsp;&nbsp;hide:{auto:false,click:true,time:0}</span></br></li><li class="L4"><span class="pln">}</span></li></ol></pre>
+
+	</div>
+</article>
+
+<div class="bs-callout bs-callout-info">
+    <p>Despues de inicializar el objeto <b>alert</b> en javascript, se puede seguir modificando la directiva en diferentes eventos</p>
+</div>
+
+<pre class="prettyprint linenums">
+	<ol class="linenums"><li class="L0"><span class="pln">$scope.warning=function(){</span></br></li><li class="L1"><span class="pln">&nbsp;&nbsp;$scope.alert.type=</span><span class="str">"warning"</span>;</br></li><li class="L2"><span class="pln">}</span></br></li><li class="L3"><span class="pln">$scope.error=function(){</span></br></li><li class="L4"><span class="pln">&nbsp;&nbsp;$scope.alert.type=</span><span class="str">"error"</span>;</br></li><li class="L5"><span class="pln">}</span></br></li><li class="L6"><span class="pln">$scope.new=function(){</span></br></li><li class="L7"><span class="pln">&nbsp;&nbsp;$scope.alert.message=</span><span class="str">"New Message"</span>;</br></li><li class="L8"><span class="pln">}</span></br></li><li class="L9"><span class="pln">$scope.time=function(){</span></br></li><li class="L10"><span class="pln">&nbsp;&nbsp;$scope.alert.hide.auto=true;</span></br></li><li class="L11"><span class="pln">&nbsp;&nbsp;$scope.alert.hide.time=5000;</span></br></li><li class="L12"><span class="pln">}</span></br></li></ol>
+</pre>
+
+</br>
+<div class="bs-callout bs-callout-info">
+  <h3>Especificaciones</h3></br>
+</div>
+
+<table class="table table-bordered table-striped">
+    <colgroup>
+      <col class="span1">
+      <col class="span7">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Propiedad</th>
+        <th>Tipo</th>
+        <th>Descripción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>message</td>
+        <td>Caracter</td>
+        <td>Imprime el mensaje dentro de la alerta</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>Caracter</td>
+        <td>Define el tipo de alerta ('info','success','warning','error')</td>
+      </tr>
+      <tr>
+        <td>message</td>
+        <td>Caracter</td>
+        <td>Imprime el mensaje dentro de la alerta.</td>
+      </tr>
+      <tr>
+        <td>hide</td>
+        <td>objeto</td>
+        <td>Utiliza tres propiedades para definir como ocultar la alerta.</td>
+      </tr>
+      <tr>
+        <td>hide.auto</td>
+        <td>booleano(true,false)</td>
+        <td>permite habilitar el cierre de la directiva automaticamente.</td>
+      </tr>
+      <tr>
+        <td>hide.time</td>
+        <td>Entero</td>
+        <td>Define el tiempo en el que se ocultara la alerta, si esta propiedad no es definida, se ocultara automaticamente en 5 segundos.</td>
+      </tr>
+      <tr>
+        <td>hide.click</td>
+        <td>booleano(true,false)</td>
+        <td>Oculta o muestra el boton de cierre de la alerta.</td>
+      </tr>
+
+    </tbody>
+</table>
+

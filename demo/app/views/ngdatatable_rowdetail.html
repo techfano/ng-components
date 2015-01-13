@@ -1,0 +1,76 @@
+<h1>ngDataTable</h1>
+
+<div class="bs-callout bs-callout-info">
+  <h3>Detalles de consulta para cada fila.</h3>
+</div>
+
+<!-- <div class="bs-docs-example">
+
+  <ng-datatable stoptions="optionsRemote3">
+  </ng-datatable>
+
+</div> -->
+
+<div class="bs-docs-example">
+
+  <ng-datatable stoptions="optionsDetail">
+  </ng-datatable>
+
+</div>
+
+<br>
+<p>Inicializar el componente ngDataTable de la siguiente manera:</p>
+<br>
+<h3>en el Controlador</h3>
+<pre>
+
+	$scope.parametros={
+	           appId:"12345",
+	           numeroPagina:1,
+	           numeroRegistros:20,
+	    }
+
+   	$scope.optionsRemote3={
+           ngDatatable:{
+              theads:[{title:'Id', center:true},
+                {title:'Nombre'},
+                {title:'Dirección'},
+                {title:'Fecha', center:true},
+                {title:'Trabajadores'},
+                {title:'Locales'}],
+              icons:[
+                {name:'Eliminar',
+                class:'icon-trash',
+                action:function(row){
+                  alert('Eliminar '+JSON.stringify(row));
+                }
+              }],
+
+              rowDetails:{
+                include:'template/tabla/detail.html',
+                height:50,
+                action:function(row){
+                  //alert('detalle '+JSON.stringify(row));
+                },
+              },
+
+              define:{totalRows:'data.numeroRegistros',
+                dataObject:'data.lista'},
+              dataAjax:{
+                url:'obtain/remote/bancos',
+                parameters:$scope.parametros
+              }
+          }
+      	}    
+
+</pre>
+
+<br>
+<h3>en la Vista</h3>
+
+<pre>
+
+	&ltng-datatable stoptions="optionsRemote3"&gt
+  	&lt/ng-datatable&gt
+
+</pre>
