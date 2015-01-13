@@ -10,7 +10,7 @@ components for Angular.js and bootstrap 2.3.2, only check some examples about co
 
 #Getting Started
 
-you could see the live exameples in this website:
+you could see the live examples in this website:
 
 http://lab.prodesign.pe/ui/components/ng-components/
 
