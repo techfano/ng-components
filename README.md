@@ -9,8 +9,6 @@ Licensed under MIT. ui-components.js is absolutely free for personal or commerci
 - uiAlert
 - uiAccordeon
 - uiTabs
-- uiTable
-- uiWizard
 - uiAccordeon
 
 #Getting Started
