@@ -1,4 +1,4 @@
-angular.module('ngcomponents', []).directive('ngAlert', function(){
+angular.module('uicomponents', []).directive('uiAlert', function(){
     return {
       restrict: 'E',
       transclude: true,
@@ -100,7 +100,7 @@ angular.module('ngcomponents', []).directive('ngAlert', function(){
                 '  <button class="close" type="button" data-ng-show="mostrarClose" data-ng-click="showAlert(false)">Cerrar</button>'+
                 '</div>'
     };
-}).directive('ngTabs', function(){
+}).directive('uiTabs', function(){
     return {
       restrict: 'E',
       transclude: true,
@@ -161,9 +161,9 @@ angular.module('ngcomponents', []).directive('ngAlert', function(){
                 '<div class="tab-content" data-ng-transclude></div>'+
                 '</div>'
     };
-}).directive('ngPane', function(){
+}).directive('uiPane', function(){
     return {
-      require: '^ngTabs',
+      require: '^uiTabs',
       restrict: 'E',
       transclude: true,
       scope: {
@@ -176,7 +176,7 @@ angular.module('ngcomponents', []).directive('ngAlert', function(){
     };
 }).directive('actionTab', function(){
     return {
-      require: '^?ngTabs',
+      require: '^?uiTabs',
       restrict: 'E',
       transclude: true,
       scope: {
@@ -221,7 +221,7 @@ angular.module('ngcomponents', []).directive('ngAlert', function(){
                 '</button>'
     
     };
-}).directive('ngAccordeon', function(){
+}).directive('uiAccordeon', function(){
   return {
     restrict: 'E',
     transclude: true,
@@ -255,9 +255,9 @@ angular.module('ngcomponents', []).directive('ngAlert', function(){
           +'</div>'
 
   }
-}).directive('ngResort', function(){
+}).directive('uiResort', function(){
     return {
-      require: '^ngAccordeon',
+      require: '^uiAccordeon',
       restrict: 'E',
       replace:true,
       transclude: true,
